@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Enums\ClientTypeEnum;
+use App\Models\Client;
+use App\Models\ReportAccident;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->route('login');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function home()
+    {
+        $users = User::latest()->limit(5)->get();
+        $users_count = User::count();
+        $patients = Client::where('type', ClientTypeEnum::PATIENT)->latest()->limit(5)->get();
+        $patients_count = Client::where('type', ClientTypeEnum::PATIENT)->count();
+        $doctors = Client::where('type', ClientTypeEnum::DOCTOR)->latest()->limit(5)->get();
+        $doctors_count = Client::where('type', ClientTypeEnum::DOCTOR)->count();
+
+        return view('dashboard.index', compact('users', 'users_count', 'patients', 'patients_count', 'doctors', 'doctors_count'));
     }
 }
