@@ -42,24 +42,9 @@
 
             <li class="side-item side-item-category">{{ __('dashboard.users') }}</li>
             @include('dashboard.users.partials.actions.sidebar')
-            @include('dashboard.patients.partials.actions.sidebar')
-            @include('dashboard.doctors.partials.actions.sidebar')
-
-            <li class="side-item side-item-category">{{ __('dashboard.consultations') }}</li>
-            @include('dashboard.services.partials.actions.sidebar')
-            @include('dashboard.coupons.partials.actions.sidebar')
 
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
-{{--            @include('dashboard.banks.partials.actions.sidebar')--}}
-{{--            @include('dashboard.bank_accounts.partials.actions.sidebar')--}}
-{{--            @include('dashboard.bank_transfers.partials.actions.sidebar')--}}
-{{--            @include('dashboard.balance_withdraw_requests.partials.actions.sidebar')--}}
-            @include('dashboard.nationalities.partials.actions.sidebar')
-            @include('dashboard.cities.partials.actions.sidebar')
-            @include('dashboard.splashes.partials.actions.sidebar')
-            @include('dashboard.sliders.partials.actions.sidebar')
             @include('dashboard.notifications.partials.actions.sidebar')
-            @include('dashboard.pages.partials.actions.sidebar')
             @include('dashboard.settings.partials.actions.sidebar')
         </ul>
     </div>
