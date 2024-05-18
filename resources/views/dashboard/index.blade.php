@@ -41,13 +41,13 @@
             <div class="card overflow-hidden sales-card bg-success-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">{{ __('patients.plural') }}</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ __('salesmen.plural') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{$patients_count}}</h4>
-                                <a href="{{route('patients.index')}}"> <p class="mb-0 tx-12 text-white op-7">{{ __('patients.actions.list') }}</p> </a>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{$salesmen_count}}</h4>
+                                <a href="{{route('salesmen.index')}}"> <p class="mb-0 tx-12 text-white op-7">{{ __('salesmen.actions.list') }}</p> </a>
                             </div>
                         </div>
                     </div>
@@ -59,13 +59,13 @@
             <div class="card overflow-hidden sales-card bg-warning-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">{{ __('doctors.plural') }}</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ __('cars.plural') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{$doctors_count}}</h4>
-                                <a href="{{route('doctors.index')}}"> <p class="mb-0 tx-12 text-white op-7">{{ __('doctors.actions.list') }}</p> </a>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{$cars_count}}</h4>
+                                <a href="{{route('cars.index')}}"> <p class="mb-0 tx-12 text-white op-7">{{ __('cars.actions.list') }}</p> </a>
                             </div>
                         </div>
                     </div>
@@ -108,19 +108,19 @@
         <div class="col-xl-6 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-header pb-1">
-                    <h3 class="card-title mb-2">{{ __('patients.actions.latest') }}</h3>
+                    <h3 class="card-title mb-2">{{ __('salesmen.actions.latest') }}</h3>
                 </div>
                 <div class="card-body p-0 customers mt-1">
                     <div class="list-group list-lg-group list-group-flush">
-                        @foreach($patients as $patient )
+                        @foreach($salesmen as $salesman )
                         <div class="list-group-item list-group-item-action" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto" src="{{$patient->getAvatar()}}">
+                                <img class="avatar-lg rounded-circle ml-3 my-auto" src="{{$salesman->getAvatar()}}">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-0">
-                                            <h5 class="mb-1 tx-15">{{$patient->name}}</h5>
-                                            <p class="mb-0 tx-13 text-muted">{{ __('dashboard.id') }}: #{{$patient->id}}</p>
+                                            <h5 class="mb-1 tx-15">{{$salesman->name}}</h5>
+                                            <p class="mb-0 tx-13 text-muted">{{ __('dashboard.id') }}: #{{$salesman->id}}</p>
                                         </div>
                                     </div>
                                 </div>
