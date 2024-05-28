@@ -41,10 +41,9 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('cars.attributes.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('cars.attributes.title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('cars.attributes.status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('cars.attributes.chassis_number') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('cars.attributes.license_number') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('cars.attributes.created_at') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('cars.attributes.status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('cars.actions.actions') }}</th>
                                 </tr>
                             </thead>
@@ -58,7 +57,6 @@
                                         <td>
                                             <span class="badge {{$car->status->color()}}">{{$car->status->trans()}}</span>
                                         </td>
-                                        <td>{{$car->created_at->diffForHumans()}}</td>
                                         <td>
                                             @include('dashboard.cars.partials.actions.show')
                                             @include('dashboard.cars.partials.actions.edit')
