@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('salesmen', SalesmanController::class);
 
     //Application settings
+    Route::resource('products', ProductController::class);
     Route::resource('cars', CarController::class);
     Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store']);
     Route::resource('settings', SettingController::class)->only(['index', 'show', 'edit', 'update']);

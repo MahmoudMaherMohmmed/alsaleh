@@ -46,6 +46,7 @@
 
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
             @include('dashboard.cars.partials.actions.sidebar')
+            @include('dashboard.products.partials.actions.sidebar')
             @include('dashboard.notifications.partials.actions.sidebar')
             @include('dashboard.settings.partials.actions.sidebar')
         </ul>
