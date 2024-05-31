@@ -29,6 +29,8 @@ return [
         'title' => 'الاسم',
         'description' => 'الوصف',
         'cash_price' => 'سعر البيع (كاش)',
+        'installment_price' => 'سعر البيع (قسط)',
+        'installments_count' => 'عدد الأقساط',
         'quantity' => 'الكمية المتاحة',
         'image' => 'صورة المنتج',
         'status' => 'الحالة',

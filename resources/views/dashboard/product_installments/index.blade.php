@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('title') {{__('products.plural')}} @endsection
+@section('title') {{__('product_installments.plural')}} @endsection
 
 @section('css')
     <!-- Internal Data table css -->
@@ -18,11 +18,16 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('dashboard.application') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('products.plural') }}</span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('products.index') }}">{{ __('products.plural') }}</a></span>
+                @if($product!=null)
+                    <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{$product->getTranslation('title', app()->getLocale())}}</span>
+                @endif
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('product_installments.plural') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.products.partials.actions.create')
+            @include('dashboard.product_installments.partials.actions.create')
+            @include('dashboard.product_installments.partials.models.create')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -39,35 +44,30 @@
                         <table class="table text-md-nowrap" id="example2">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.cash_price') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.installment_price') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.installments_count') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.status') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.actions.actions') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('product_installments.attributes.id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('product_installments.attributes.title') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('product_installments.attributes.value') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('product_installments.attributes.status') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('product_installments.actions.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($product_installments as $product_installment)
                                     <tr>
-                                        <td>{{$product->id}}</td>
-                                        <td>{{$product->getTranslation('title', app()->getLocale())}}</td>
-                                        <td>{{$product->cash_price}}</td>
-                                        <td>{{$product->installments()->sum('value')}}</td>
-                                        <td>{{$product->installments()->count()}}</td>
+                                        <td>{{$product_installment->id}}</td>
+                                        <td>{{$product_installment->getTranslation('title', app()->getLocale())}}</td>
+                                        <td>{{$product_installment->value}}</td>
                                         <td>
-                                            <span class="badge {{$product->status->color()}}">{{$product->status->trans()}}</span>
+                                            <span class="badge {{$product_installment->status->color()}}">{{$product_installment->status->trans()}}</span>
                                         </td>
                                         <td>
-                                            @include('dashboard.products.partials.actions.show')
-                                            @include('dashboard.products.partials.actions.edit')
-                                            @include('dashboard.products.partials.actions.installments')
-                                            @include('dashboard.products.partials.actions.delete')
+                                            @include('dashboard.product_installments.partials.actions.edit')
+                                            @include('dashboard.product_installments.partials.actions.delete')
                                         </td>
                                     </tr>
 
-                                    @include('dashboard.products.partials.models.delete')
+                                    @include('dashboard.product_installments.partials.models.edit')
+                                    @include('dashboard.product_installments.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>

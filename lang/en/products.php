@@ -28,6 +28,8 @@ return [
         'title' => 'Title',
         'description' => 'Description',
         'cash_price' => 'Cash price',
+        'installment_price' => 'Installment price',
+        'installments_count' => 'Installment count',
         'quantity' => 'Quantity',
         'image' => 'Image',
         'status' => 'Status',

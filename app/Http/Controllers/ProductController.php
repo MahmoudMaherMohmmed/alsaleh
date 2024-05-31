@@ -101,4 +101,17 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', trans('products.messages.deleted'));
     }
+
+    /**
+     * Display the specified resource installments.
+     *
+     * @param \App\Models\Product $product
+     * @return \Illuminate\View\View
+     */
+    public function installments(Product $product)
+    {
+        $product_installments = $product->installments;
+
+        return view('dashboard.product_installments.index', compact('product', 'product_installments'));
+    }
 }

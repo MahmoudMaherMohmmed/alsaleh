@@ -45,6 +45,14 @@
                                     <td>{{$product->cash_price}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('products.attributes.installment_price') }}</th>
+                                    <td>{{$product->installments()->sum('value')}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('products.attributes.installments_count') }}</th>
+                                    <td>{{$product->installments()->count()}}</td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('products.attributes.status') }}</th>
                                     <td> <span class="badge {{$product->status->color()}}">{{$product->status->trans()}}</span> </td>
                                 </tr>
@@ -60,6 +68,7 @@
                                     <th scope="row">{{ __('products.actions.actions') }}</th>
                                     <td>
                                         @include('dashboard.products.partials.actions.edit')
+                                        @include('dashboard.products.partials.actions.installments')
                                         @include('dashboard.products.partials.actions.delete')
                                     </td>
                                     @include('dashboard.products.partials.models.delete')
