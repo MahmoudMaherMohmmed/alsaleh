@@ -104,6 +104,6 @@ class CarSalesmanController extends Controller
     {
         $car_salesman->delete();
 
-        return back()->with('success', trans('car_salesmen.messages.deleted'));
+        return redirect()->route('car_salesmen.index')->with('success', trans('car_salesmen.messages.deleted'));
     }
 }

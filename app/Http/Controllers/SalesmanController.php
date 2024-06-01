@@ -108,6 +108,6 @@ class SalesmanController extends Controller
         ]);
         $salesman->delete();
 
-        return redirect()->back()->with('success', trans('salesmen.messages.deleted'));
+        return redirect()->route('salesmen.index')->with('success', trans('salesmen.messages.deleted'));
     }
 }

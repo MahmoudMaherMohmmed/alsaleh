@@ -99,7 +99,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->back()->with('success', trans('products.messages.deleted'));
+        return redirect()->route('products.index')->with('success', trans('products.messages.deleted'));
     }
 
     /**

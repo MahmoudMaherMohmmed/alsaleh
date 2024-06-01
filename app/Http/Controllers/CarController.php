@@ -89,6 +89,6 @@ class CarController extends Controller
     {
         $car->delete();
 
-        return back()->with('success', trans('cars.messages.deleted'));
+        return redirect()->route('cars.index')->with('success', trans('cars.messages.deleted'));
     }
 }
