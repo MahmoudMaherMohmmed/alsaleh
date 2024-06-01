@@ -28,4 +28,14 @@ class StoreCarSalesmanRequest extends FormRequest
             'start_date' => 'required|date'
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('car_salesmen.attributes');
+    }
 }

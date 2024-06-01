@@ -27,4 +27,14 @@ class StoreNotificationRequest extends FormRequest
             'body' => 'required|string',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('notifications.attributes');
+    }
 }

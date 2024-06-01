@@ -34,4 +34,14 @@ class UpdateProductRequest extends FormRequest
             'image' => 'nullable|mimes:jpeg,png,jpg,svg',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('products.attributes');
+    }
 }

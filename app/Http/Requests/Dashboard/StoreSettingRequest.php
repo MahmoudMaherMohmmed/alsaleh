@@ -33,4 +33,14 @@ class StoreSettingRequest extends FormRequest
             'image' => 'sometimes|mimes:jpeg,png,jpg,svg',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('settings.attributes');
+    }
 }

@@ -34,4 +34,14 @@ class StoreProductRequest extends FormRequest
             'image' => 'required|mimes:jpeg,png,jpg,svg',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('products.attributes');
+    }
 }
