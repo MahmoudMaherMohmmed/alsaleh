@@ -76,7 +76,7 @@
 
         if(Notification.permission!=='default'){
             var notify;
-            notify= new Notification("{{__('dashboard.eva_clinic')}} | " + payload.notification.title,{
+            notify= new Notification("{{__('dashboard.saleh_electronics')}} | " + payload.notification.title,{
                 'body': payload.notification.body,
                 'icon': "{{URL::asset('dashboard/assets/img/brand/logo.png')}}",
                 'tag': payload.data.url

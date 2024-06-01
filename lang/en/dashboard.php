@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'eva_clinic' => 'Eva Clinic',
+    'saleh_electronics' => 'Al-Saleh Electronics',
     'id' => 'ID',
     'home' => 'Home',
     'users' => 'Users',

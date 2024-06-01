@@ -30,7 +30,7 @@
 								<div id="err" style="color:white;display:none;"></div>
 
 								<div class="card-sigin">
-									<div class="mb-5 d-flex"> <a href="javascript:void(0)"><img src="{{URL::asset('dashboard/assets/img/brand/favicon.png')}}" class="sign-favicon ht-60" alt="logo"></a><h1 class="main-logo1 ml-2 mr-2 my-auto tx-28">{{ __('dashboard.eva_clinic') }}</h1></div>
+									<div class="mb-5 d-flex"> <a href="javascript:void(0)"><img src="{{URL::asset('dashboard/assets/img/brand/favicon.png')}}" class="sign-favicon ht-60" alt="logo"></a><h1 class="main-logo1 ml-2 mr-2 my-auto tx-28">{{ __('dashboard.saleh_electronics') }}</h1></div>
 									<div class="card-sigin">
 										<div class="main-signup-header">
 											<h2>{{ __('auth.welcome')}}</h2>
