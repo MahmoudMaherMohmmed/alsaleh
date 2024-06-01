@@ -35,20 +35,8 @@
                 <div class="card-body">
                     <form method="post" action="{{route('notifications.store')}}" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
-                    
+
                         <div class="row row-sm">
-
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label class="form-label">{{ __('notifications.attributes.clients') }} <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2-no-search" name="clients[]" multiple required>
-                                        <option value="0"> {{ __('notifications.attributes.all_clients') }} </option>
-                                        <option value="1"> {{ __('notifications.attributes.all_winches') }} </option>
-                                        <option value="2"> {{ __('notifications.attributes.all_workshops') }} </option>
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('notifications.attributes.title') }} <span class="tx-danger">*</span></label>

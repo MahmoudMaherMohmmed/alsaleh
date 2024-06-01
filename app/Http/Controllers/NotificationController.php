@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ClientTypeEnum;
 use App\Http\Requests\Dashboard\StoreNotificationRequest;
 use App\Models\Client;
+use App\Notifications\NewNotification;
 use Illuminate\Notifications\DatabaseNotification;
-use App\Notifications\ReportAccidentNotification;
 use Illuminate\Support\Facades\Notification;
 
 class NotificationController extends Controller
@@ -35,15 +36,15 @@ class NotificationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Dashboard\StoreNotificationRequest  $request
+     * @param \App\Http\Requests\Dashboard\StoreNotificationRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreNotificationRequest $request)
     {
-        $clients = Client::whereIn('type', $request->clients)->active()->get();
+        $clients = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
 
         // Save notifications
-        Notification::send($clients, new ReportAccidentNotification($request->title, $request->body));
+        Notification::send($clients, new NewNotification($request->title, $request->body));
 
         //Send notifications with Firebase
         foreach ($clients as $client) {
