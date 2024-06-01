@@ -43,9 +43,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.car') }}</th>
                                     <th class="wd-20p border-bottom-0">{{ __('car_salesmen.attributes.salesman') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.salesman_assistant') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.start_date') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.end_date') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.created_at') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.start_date') }} / {{ __('car_salesmen.attributes.end_date') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('car_salesmen.actions.actions') }}</th>
                                 </tr>
                             </thead>
@@ -56,9 +54,7 @@
                                         <td>{{$car_salesman->car->title}}</td>
                                         <td>{{$car_salesman->salesman->name}}</td>
                                         <td>{{$car_salesman->salesman_assistant->name}}</td>
-                                        <td>{{$car_salesman->start_date}}</td>
-                                        <td>{{$car_salesman->end_date}}</td>
-                                        <td>{{$car_salesman->created_at->diffForHumans()}}</td>
+                                        <td>{{$car_salesman->start_date}} / {{$car_salesman->end_date}}</td>
                                         <td>
                                             @include('dashboard.car_salesmen.partials.actions.show')
                                             @include('dashboard.car_salesmen.partials.actions.edit')

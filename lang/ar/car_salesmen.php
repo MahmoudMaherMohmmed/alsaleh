@@ -23,6 +23,9 @@ return [
         'updated' => 'تم تعديل مندوبين السيارة بنجاح',
         'deleted' => 'تم حذف مندوبين السيارة بنجاح',
         'retrieved' => 'تم أسترجاع البيانات بنجاح',
+        'salesmen_added_car_period_before' => 'تمت تعيين بائعين لهذه السيارة خلال هذه الفترة من قبل',
+        'salesman_added_to_car_during_this_period_before' => 'تم تعيين مندوب المبيعات الي سيارة آخري خلال المدة المحددة من قبل',
+        'salesman_assistant_added_to_car_during_this_period_before' => 'تم تعيين مساعد مندوب المبيعات الي سيارة آخري خلال المدة المحددة من قبل',
     ],
     'attributes' => [
         'id' => 'الرقم التسلسلي',

@@ -45,7 +45,7 @@
                                     <select class="form-control select2" name="car_id" require="">
                                         <option></option>
                                         @foreach($cars as $car)
-                                            <option value="{{$car->id}}" {{$car_salesman!=null && $car_salesman->client_id==$car->id ? 'selected' : ''}}> {{ $car->title }} </option>
+                                            <option value="{{$car->id}}" {{($car_salesman!=null && $car_salesman->car_id==$car->id) || (old('car_id') == $car->id)? 'selected' : ''}}> {{ $car->title }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -57,7 +57,7 @@
                                     <select class="form-control select2" name="salesman_id" require="">
                                         <option></option>
                                         @foreach($salesmen as $salesman)
-                                            <option value="{{$salesman->id}}" {{$car_salesman!=null && $car_salesman->salesman_id==$salesman->id ? 'selected' : ''}}> {{ $salesman->name }} </option>
+                                            <option value="{{$salesman->id}}" {{($car_salesman!=null && $car_salesman->salesman_id==$salesman->id) || (old('salesman_id') == $salesman->id) ? 'selected' : ''}}> {{ $salesman->name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,7 +69,7 @@
                                     <select class="form-control select2" name="salesman_assistant_id" require="">
                                         <option></option>
                                         @foreach($salesmen as $salesman)
-                                            <option value="{{$salesman->id}}" {{$car_salesman!=null && $car_salesman->salesman_assistant_id==$salesman->id ? 'selected' : ''}}> {{ $salesman->name }} </option>
+                                            <option value="{{$salesman->id}}" {{($car_salesman!=null && $car_salesman->salesman_assistant_id==$salesman->id) || (old('salesman_assistant_id') == $salesman->id) ? 'selected' : ''}}> {{ $salesman->name }} </option>
                                         @endforeach
                                     </select>
                                 </div>

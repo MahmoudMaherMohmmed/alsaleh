@@ -22,6 +22,9 @@ return [
         'updated' => 'The car salesman has been updated successfully',
         'deleted' => 'The car salesman has been deleted successfully',
         'retrieved' => 'Data has been retrieved successfully',
+        'salesmen_added_car_period_before' => 'salesmen have been added to this car during this period before',
+        'salesman_added_to_car_during_this_period_before' => 'This salesman has previously added to the car during this period',
+        'salesman_assistant_added_to_car_during_this_period_before' => 'This salesman assistant has previously added to the car during this period',
     ],
     'attributes' => [
         'id' => 'ID',

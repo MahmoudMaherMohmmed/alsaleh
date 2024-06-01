@@ -46,6 +46,15 @@ class CarSalesmanController extends Controller
      */
     public function store(StoreCarSalesmanRequest $request)
     {
+        if (CarSalesman::where('car_id', $request->car_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesmen_added_car_period_before')]);
+
+        if (CarSalesman::where('salesman_id', $request->salesman_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesman_added_to_car_during_this_period_before')]);
+
+        if (CarSalesman::where('salesman_assistant_id', $request->salesman_assistant_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesman_assistant_added_to_car_during_this_period_before')]);
+
         $car_salesman = CarSalesman::create(array_merge($request->validated(), [
             'end_date' => Carbon::parse($request->start_date)->addMonth()->subDay()->format('Y-m-d')
         ]));
@@ -87,6 +96,15 @@ class CarSalesmanController extends Controller
      */
     public function update(UpdateCarSalesmanRequest $request, CarSalesman $car_salesman)
     {
+        if (CarSalesman::where('id', '!=', $car_salesman->id)->where('car_id', $request->car_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesmen_added_car_period_before')]);
+
+        if (CarSalesman::where('id', '!=', $car_salesman->id)->where('salesman_id', $request->salesman_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesman_added_to_car_during_this_period_before')]);
+
+        if (CarSalesman::where('id', '!=', $car_salesman->id)->where('salesman_assistant_id', $request->salesman_assistant_id)->where('start_date', $request->start_date)->first())
+            return back()->withInput()->withErrors(['message' => __('car_salesmen.messages.salesman_assistant_added_to_car_during_this_period_before')]);
+
         $car_salesman->update(array_merge($request->validated(), [
             'end_date' => Carbon::parse($request->start_date)->addMonth()->subDay()->format('Y-m-d')
         ]));
