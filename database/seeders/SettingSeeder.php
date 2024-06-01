@@ -14,11 +14,11 @@ class SettingSeeder extends Seeder
     public function run(): void
     {
         Setting::create([
-            'title' => ['ar' => 'إيف كلينك', 'en' => 'Eva Clinic'],
-            'whatsapp_number' => '966920013504',
-            'calling_number' => '966920013504',
-            'info_email' => 'info@evaclinc.com',
-            'support_email' => 'support@evaclinc.com',
+            'title' => ['ar' => 'الصالح للإلكترونيات', 'en' => 'Al-Saleh Electronics'],
+            'whatsapp_number' => '01021818597',
+            'calling_number' => '0638361373',
+            'info_email' => 'info@alsaalex.com',
+            'support_email' => 'support@alsaalex.com',
         ]);
     }
 }
