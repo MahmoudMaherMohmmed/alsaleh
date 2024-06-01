@@ -41,9 +41,7 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.cash_price') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.installment_price') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.installments_count') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.serial_number') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.actions.actions') }}</th>
                                 </tr>
@@ -53,9 +51,7 @@
                                     <tr>
                                         <td>{{$product->id}}</td>
                                         <td>{{$product->getTranslation('title', app()->getLocale())}}</td>
-                                        <td>{{$product->cash_price}}</td>
-                                        <td>{{$product->installments()->sum('value')}}</td>
-                                        <td>{{$product->installments()->count()}}</td>
+                                        <td>{{$product->serial_number}}</td>
                                         <td>
                                             <span class="badge {{$product->status->color()}}">{{$product->status->trans()}}</span>
                                         </td>

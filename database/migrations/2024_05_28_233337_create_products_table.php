@@ -15,8 +15,10 @@ return new class extends Migration {
             $table->id();
             $table->text('title');
             $table->text('description')->nullable();
-            $table->double('cash_price')->default(0);
+            $table->string('serial_number')->nullable();
             $table->integer('quantity')->default(0);
+            $table->double('cash_price')->default(0);
+            $table->double('salesman_profit')->default(0);
             $table->boolean('status')->default(ProductStatusEnum::ACTIVE->value);
             $table->timestamps();
             $table->softDeletes();

@@ -41,6 +41,10 @@
                                     <td>{{$product->getTranslation('description', app()->getLocale())}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('products.attributes.serial_number') }}</th>
+                                    <td>{{$product->serial_number}}</td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('products.attributes.cash_price') }}</th>
                                     <td>{{$product->cash_price}}</td>
                                 </tr>
@@ -51,6 +55,10 @@
                                 <tr>
                                     <th scope="row">{{ __('products.attributes.installments_count') }}</th>
                                     <td>{{$product->installments()->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('products.attributes.salesman_profit') }}</th>
+                                    <td>{{$product->salesman_profit}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{{ __('products.attributes.status') }}</th>

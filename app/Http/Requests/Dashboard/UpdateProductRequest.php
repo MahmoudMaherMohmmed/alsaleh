@@ -26,8 +26,10 @@ class UpdateProductRequest extends FormRequest
             'title.*' => 'string',
             'description' => 'nullable|array',
             'description.*' => 'nullable|string',
-            'cash_price' => 'required|numeric',
+            'serial_number' => 'required|string|unique:products,serial_number,' . $this->product->id,
             'quantity' => 'required|numeric',
+            'cash_price' => 'required|numeric',
+            'salesman_profit' => 'required|numeric',
             'status' => 'required',
             'image' => 'nullable|mimes:jpeg,png,jpg,svg',
         ];

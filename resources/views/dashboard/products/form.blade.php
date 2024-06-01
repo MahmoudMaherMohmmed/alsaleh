@@ -11,6 +11,19 @@
     <link href="{{URL::asset('dashboard/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
     <!---Internal Fancy uploader css-->
     <link href="{{URL::asset('dashboard/assets/plugins/fancyuploder/fancy_fileupload.css')}}" rel="stylesheet" />
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 @endsection
 
 @section('page-header')
@@ -101,8 +114,8 @@
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('products.attributes.cash_price') }} <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="cash_price" placeholder="{{ __('products.attributes.cash_price') }}" value="{{$product!=null ? $product->cash_price : old('cash_price')}}" required="" type="number" step=".01">
+                                    <label class="form-label">{{ __('products.attributes.serial_number') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="serial_number" placeholder="{{ __('products.attributes.serial_number') }}" value="{{$product!=null ? $product->serial_number : old('serial_number')}}" required="" type="text">
                                 </div>
                             </div>
 
@@ -110,6 +123,20 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('products.attributes.quantity') }} <span class="tx-danger">*</span></label>
                                     <input class="form-control" name="quantity" placeholder="{{ __('products.attributes.quantity') }}" value="{{$product!=null ? $product->quantity : old('quantity', 0)}}" required="" type="number">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('products.attributes.cash_price') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="cash_price" placeholder="{{ __('products.attributes.cash_price') }}" value="{{$product!=null ? $product->cash_price : old('cash_price')}}" required="" type="number" step=".01">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('products.attributes.salesman_profit') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="salesman_profit" placeholder="{{ __('products.attributes.salesman_profit') }}" value="{{$product!=null ? $product->salesman_profit : old('salesman_profit')}}" required="" type="number" step=".01">
                                 </div>
                             </div>
 
