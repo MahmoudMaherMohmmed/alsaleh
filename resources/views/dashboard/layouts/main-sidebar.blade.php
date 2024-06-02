@@ -43,6 +43,7 @@
             <li class="side-item side-item-category">{{ __('dashboard.users') }}</li>
             @include('dashboard.users.partials.actions.sidebar')
             @include('dashboard.salesmen.partials.actions.sidebar')
+            @include('dashboard.customers.partials.actions.sidebar')
 
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
             @include('dashboard.cars.partials.actions.sidebar')
