@@ -23,5 +23,6 @@ return array(
     'wrong_activation_code' => 'Wrong activation code has been entered',
     'message_sent' => 'Your Message Sent Successfully.',
     'number_is_incorrect' => 'Phone number format is incorrect',
-    'no_bank_account' => 'No bank account found'
+    'no_bank_account' => 'No bank account found',
+    'account_deleted_successfully' => 'Your account deleted successfully',
 );

@@ -105,5 +105,4 @@ class NotificationController extends Controller
             'message' => trans('notifications.messages.deleted'),
         ], 200);
     }
-
 }

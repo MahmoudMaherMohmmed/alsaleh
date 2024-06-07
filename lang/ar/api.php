@@ -23,5 +23,6 @@ return array (
     'wrong_activation_code' => 'تم إدخال رمز التفعيل الخاطئ',
     'message_sent' => 'تم إرسال رسالتك بنجاح.',
     'number_is_incorrect' => 'صيغة رقم الجوال غير صحيح',
-    'no_bank_account' => 'لا يوجد حساب بنكي'
+    'no_bank_account' => 'لا يوجد حساب بنكي',
+    'account_deleted_successfully' => 'تم حذف حسابك بنجاح',
 );

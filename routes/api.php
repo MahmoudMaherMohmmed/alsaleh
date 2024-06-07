@@ -22,11 +22,7 @@ Route::middleware('localization')->group(function () {
     Route::get('languages', [SettingController::class, 'languages']);
     Route::post('login', [ClientController::class, 'login']);
     Route::middleware('auth:api')->group(function () {
-        Route::post('profile/change_password', [ClientController::class, 'changePassword']);
         Route::get('profile', [ClientController::class, 'profile']);
-        Route::post('profile/update', [ClientController::class, 'UpdateProfile']);
-        Route::post('profile/update/image', [ClientController::class, 'updateProfileImage']);
-        Route::post('profile/update_password', [ClientController::class, 'updatePassword']);
         Route::post('logout', [ClientController::class, 'logout']);
         Route::post('profile/delete', [ClientController::class, 'delete']);
 
