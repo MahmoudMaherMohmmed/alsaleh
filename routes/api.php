@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::middleware('localization')->group(function () {
         Route::get('profile', [ClientController::class, 'profile']);
         Route::post('logout', [ClientController::class, 'logout']);
         Route::post('profile/delete', [ClientController::class, 'delete']);
+
+        //Products
+        Route::get('products', [ProductController::class, 'index']);
+        Route::get('products/{product}', [ProductController::class, 'show']);
 
         //Notifications
         Route::get('notifications', [NotificationController::class, 'index']);
