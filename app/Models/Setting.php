@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\SettingResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -21,6 +22,8 @@ class Setting extends Model implements HasMedia
         'calling_number',
         'info_email',
         'support_email',
+        'salesman_profit_percentage',
+        'salesman_assistant_profit_percentage',
     ];
 
     public $translatable = ['title', 'description'];

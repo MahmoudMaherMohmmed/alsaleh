@@ -31,9 +31,10 @@ return [
         'calling_number' => 'رقم الاتصال المباشر',
         'info_email' => 'أيميل الاستعلام',
         'support_email' => 'أيميل الدعم',
+        'salesman_profit_percentage' => 'نسبة ربح مندوب المبيعات',
+        'salesman_assistant_profit_percentage' => 'نسبة ربح مساعد مندوب المبيعات',
         'image' => 'الصورة',
-        'created_at' => 'تاريخ ألإضافة',
-        'added_tax_value' => 'قيمة الضريبة المضافة'
+        'created_at' => 'تاريخ ألإضافة'
     ],
     'dialogs' => [
         'delete' => [

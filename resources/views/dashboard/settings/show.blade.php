@@ -57,6 +57,14 @@
                                     <td>{{$setting->support_email}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('settings.attributes.salesman_profit_percentage') }}</th>
+                                    <td>{{$setting->salesman_profit_percentage}} %</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('settings.attributes.salesman_assistant_profit_percentage') }}</th>
+                                    <td>{{$setting->salesman_assistant_profit_percentage}} %</td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('settings.attributes.created_at') }}</th>
                                     <td>{{$setting->created_at->diffForHumans()}}</td>
                                 </tr>

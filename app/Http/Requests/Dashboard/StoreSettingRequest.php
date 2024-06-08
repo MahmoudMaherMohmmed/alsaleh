@@ -30,6 +30,8 @@ class StoreSettingRequest extends FormRequest
             'calling_number' => 'required|numeric',
             'info_email' => 'nullable|email',
             'support_email' => 'nullable|email',
+            'salesman_profit_percentage' => 'required|numeric',
+            'salesman_assistant_profit_percentage' => 'required|numeric',
             'image' => 'sometimes|mimes:jpeg,png,jpg,svg',
         ];
     }

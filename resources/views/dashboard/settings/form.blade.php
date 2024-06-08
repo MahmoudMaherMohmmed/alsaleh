@@ -11,6 +11,19 @@
     <link href="{{URL::asset('dashboard/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
     <!---Internal Fancy uploader css-->
     <link href="{{URL::asset('dashboard/assets/plugins/fancyuploder/fancy_fileupload.css')}}" rel="stylesheet" />
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 @endsection
 
 @section('page-header')
@@ -123,6 +136,19 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('settings.attributes.support_email') }}</label>
                                     <input class="form-control" name="support_email" placeholder="{{ __('settings.attributes.support_email') }}" value="{{$setting!=null ? $setting->support_email : old('support_email')}}" type="email">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('settings.attributes.salesman_profit_percentage') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="salesman_profit_percentage" placeholder="{{ __('settings.attributes.salesman_profit_percentage') }}" value="{{$setting!=null ? $setting->salesman_profit_percentage : old('salesman_profit_percentage')}}" required="" type="number" step=".01">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('settings.attributes.salesman_assistant_profit_percentage') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="salesman_assistant_profit_percentage" placeholder="{{ __('settings.attributes.salesman_assistant_profit_percentage') }}" value="{{$setting!=null ? $setting->salesman_assistant_profit_percentage : old('salesman_assistant_profit_percentage')}}" required="" type="number" step=".01">
                                 </div>
                             </div>
 

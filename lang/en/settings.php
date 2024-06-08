@@ -31,9 +31,10 @@ return [
         'calling_number' => 'Calling number',
         'info_email' => 'Info email',
         'support_email' => 'Support email',
+        'salesman_profit_percentage' => 'Salesman profit percentage',
+        'salesman_assistant_profit_percentage' => 'Salesman assistant profit percentage',
         'image' => 'Image',
-        'created_at' => 'Created at',
-        'added_tax_value' => 'Added tax value'
+        'created_at' => 'Created at'
     ],
     'dialogs' => [
         'delete' => [
