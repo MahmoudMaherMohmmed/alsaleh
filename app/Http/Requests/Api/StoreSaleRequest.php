@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Api;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreSaleRequest extends FormRequest
 {
@@ -33,5 +35,27 @@ class StoreSaleRequest extends FormRequest
             'date' => 'required|date_format:Y-m-d',
             'type' => 'required|integer',
         ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('sales.attributes');
+    }
+
+    /**
+     * failedValidation
+     *
+     * @param \Illuminate\Contracts\Validation\Validator $validator
+     * @return never
+     * @throws \Illuminate\Http\Exceptions\HttpResponseException
+     */
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['status' => false, 'message' => $validator->errors()->first(), 'data' => $validator->errors()], 403));
     }
 }

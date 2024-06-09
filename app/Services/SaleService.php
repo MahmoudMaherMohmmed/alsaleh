@@ -25,7 +25,7 @@ class SaleService
                 ->toMediaCollection(Customer::MEDIA_VOICE_ADDRESS_NAME);
         }
 
-        return $customer;
+        return $customer->id;
     }
 
     public function getProductPrice($product_id, $type)
@@ -41,7 +41,10 @@ class SaleService
 
     public function getCarSalesman($date)
     {
-        return CarSalesman::where('salesman_id', auth()->id)->whereBetween($date, [DB::raw('DATE(start_date)'), DB::raw('DATE(expire_date)')])->first();
+        return CarSalesman::where('salesman_id', auth()->id())
+            ->where(function ($query) use ($date) {
+                $query->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
+            })->first();
     }
 
     public function getSalesmanProfitPercentage()
@@ -51,7 +54,7 @@ class SaleService
 
     public function getSalesmanProfit($product_id)
     {
-        return number_format(Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanProfitPercentage(), 2);
+        return number_format((Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanProfitPercentage()) / 100, 2);
     }
 
     public function getSalesmanAssistantProfitPercentage()
@@ -61,6 +64,6 @@ class SaleService
 
     public function getSalesmanAssistantProfit($product_id)
     {
-        return number_format(Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanAssistantProfitPercentage(), 2);
+        return number_format((Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanAssistantProfitPercentage()) / 100, 2);
     }
 }

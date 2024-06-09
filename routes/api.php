@@ -40,7 +40,7 @@ Route::middleware('localization')->group(function () {
 
         //Sales
         Route::get('sales', [SaleController::class, 'index']);
-        Route::get('sales/store', [SaleController::class, 'store']);
+        Route::post('sales/store', [SaleController::class, 'store']);
         Route::get('sales/{sale}', [SaleController::class, 'show']);
 
         //Notifications

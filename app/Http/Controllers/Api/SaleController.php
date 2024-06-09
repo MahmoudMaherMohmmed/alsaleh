@@ -50,7 +50,7 @@ class SaleController extends Controller
         if ($car_salesman == null) {
             return response()->json([
                 'status' => false,
-                'message' => trans('sales.messages.car_subscription_package_has_expired')
+                'message' => trans('sales.messages.your_account_not_assigned_salesman')
             ], 422);
         }
 
