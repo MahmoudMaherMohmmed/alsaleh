@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->foreignId('salesman_assistant_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
             $table->double('salesman_assistant_profit_percentage')->default(0);
             $table->double('salesman_assistant_profit')->default(0);
-            $table->boolean('status')->default(SaleStatusEnum::ACTIVE->value);
+            $table->boolean('status')->default(SaleStatusEnum::INSTALLMENTS_BEING_PAID->value);
             $table->timestamps();
             $table->softDeletes();
         });

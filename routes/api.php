@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SaleController;
 use App\Http\Controllers\Api\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,11 @@ Route::middleware('localization')->group(function () {
         //Products
         Route::get('products', [ProductController::class, 'index']);
         Route::get('products/{product}', [ProductController::class, 'show']);
+
+        //Sales
+        Route::get('sales', [SaleController::class, 'index']);
+        Route::get('sales/store', [SaleController::class, 'store']);
+        Route::get('sales/{sale}', [SaleController::class, 'show']);
 
         //Notifications
         Route::get('notifications', [NotificationController::class, 'index']);
