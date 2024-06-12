@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\CarSalesman;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\SaleInstallment;
 use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 
@@ -65,5 +66,39 @@ class SaleService
     public function getSalesmanAssistantProfit($product_id)
     {
         return number_format((Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanAssistantProfitPercentage()) / 100, 2);
+    }
+
+    public function saveInstallments($sale_id, $installments)
+    {
+        foreach ($installments as $key => $installment) {
+            SaleInstallment::create([
+                'sale_id' => $sale_id,
+                'title' => $this->getInstallmentName($key),
+                'value' => $installment->value,
+                'due_date' => $installment->due_date,
+                'status' => $installment->status
+            ]);
+        }
+
+        return true;
+    }
+
+    private function getInstallmentName($installment_id)
+    {
+        $installments = [
+            0 => ['ar' => 'العربون', 'en' => 'deposit'],
+            1 => ['ar' => 'القسط الأول', 'en' => 'First installment'],
+            2 => ['ar' => 'القسط الثاني', 'en' => 'Second installment'],
+            3 => ['ar' => 'القسط الثالث', 'en' => 'Third installment'],
+            4 => ['ar' => 'القسط الرابع', 'en' => 'Fourth installment'],
+            5 => ['ar' => 'القسط الخامس', 'en' => 'Fifth installment'],
+            6 => ['ar' => 'القسط السادس', 'en' => 'Sixth installment'],
+            7 => ['ar' => 'القسط السابع', 'en' => 'Seventh installment'],
+            8 => ['ar' => 'القسط الثامن', 'en' => 'Eighth installment'],
+            9 => ['ar' => 'القسط التاسع', 'en' => 'Ninth installment'],
+            10 => ['ar' => 'القسط العاشر', 'en' => 'Tenth installment'],
+        ];
+
+        return $installments[$installment_id];
     }
 }

@@ -70,6 +70,8 @@ class SaleController extends Controller
             'status' => $request->type == SaleTypeEnum::CASH->value ? SaleStatusEnum::COMPLETED->value : SaleStatusEnum::INSTALLMENTS_BEING_PAID->value,
         ]);
 
+        $this->saleService->saveInstallments($sale->id, $request->installments);
+
         return response()->json([
             'status' => true,
             'message' => trans('sales.messages.retrieved'),
