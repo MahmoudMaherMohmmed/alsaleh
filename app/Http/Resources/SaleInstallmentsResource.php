@@ -18,6 +18,8 @@ class SaleInstallmentsResource extends JsonResource
             'title' => $this->getTranslation('title', app()->getLocale()),
             'value' => $this->value,
             'due_date' => $this->due_date,
+            'status' => $this->status,
+            'localed_status' => optional($this->status)->trans(),
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),
         ];

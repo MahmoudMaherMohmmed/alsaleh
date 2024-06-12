@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\SaleStatusEnum;
 use App\Enums\SaleTypeEnum;
+use App\Http\Requests\Api\PaySaleInstallmentRequest;
 use App\Http\Requests\Api\StoreSaleRequest;
 use App\Http\Resources\SaleResource;
 use App\Models\Sale;
@@ -91,6 +92,26 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
+        return response()->json([
+            'status' => true,
+            'message' => trans('sales.messages.retrieved'),
+            'data' => new SaleResource($sale)
+        ], 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\Sale $sale
+     * @param \App\Http\Requests\Api\PaySaleInstallmentRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function payInstallment(Sale $sale, PaySaleInstallmentRequest $request)
+    {
+        $sale->installments()->forceDelete();
+
+        $this->saleService->saveInstallments($sale->id, $request->installments);
+
         return response()->json([
             'status' => true,
             'message' => trans('sales.messages.retrieved'),

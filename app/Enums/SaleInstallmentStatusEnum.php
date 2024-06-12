@@ -18,8 +18,8 @@ enum SaleInstallmentStatusEnum: int
     public function trans(): string
     {
         return match ($this) {
-            self::UNPAID => trans('sales_installments.status.' . self::UNPAID->name),
-            self::PAID => trans('sales_installments.status.' . self::PAID->name),
+            self::UNPAID => trans('sale_installments.status.' . self::UNPAID->name),
+            self::PAID => trans('sale_installments.status.' . self::PAID->name),
         };
     }
 
@@ -36,11 +36,11 @@ enum SaleInstallmentStatusEnum: int
         return [
             [
                 'id' => self::UNPAID,
-                'value' => trans('sales_installments.status.' . self::UNPAID->name)
+                'value' => trans('sale_installments.status.' . self::UNPAID->name)
             ],
             [
                 'id' => self::PAID,
-                'value' => trans('sales_installments.status.' . self::PAID->name)
+                'value' => trans('sale_installments.status.' . self::PAID->name)
             ]
         ];
     }
@@ -48,8 +48,8 @@ enum SaleInstallmentStatusEnum: int
     public static function options(): array
     {
         return [
-            self::PAID->value => trans('sales_installments.status.' . self::PAID->name),
-            self::UNPAID->value => trans('sales_installments.status.' . self::UNPAID->name),
+            self::PAID->value => trans('sale_installments.status.' . self::PAID->name),
+            self::UNPAID->value => trans('sale_installments.status.' . self::UNPAID->name),
         ];
     }
 }

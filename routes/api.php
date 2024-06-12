@@ -42,6 +42,7 @@ Route::middleware('localization')->group(function () {
         Route::get('sales', [SaleController::class, 'index']);
         Route::post('sales/store', [SaleController::class, 'store']);
         Route::get('sales/{sale}', [SaleController::class, 'show']);
+        Route::post('sales/{sale}/pay_installment', [SaleController::class, 'payInstallment']);
 
         //Notifications
         Route::get('notifications', [NotificationController::class, 'index']);
