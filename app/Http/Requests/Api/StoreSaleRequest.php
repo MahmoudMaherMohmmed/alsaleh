@@ -34,11 +34,11 @@ class StoreSaleRequest extends FormRequest
             'product_id' => 'required|integer|exists:products,id',
             'date' => 'required|date_format:Y-m-d',
             'type' => 'required|integer',
-            'installments' => 'required|array',
-            'installments.*' => 'required|array',
-            'installments.*.due_date' => 'required|date|after:today',
-            'installments.*.value' => 'required|numeric',
-            'installments.*.status' => 'required|numeric',
+            'installments' => 'required_if:type,==,0|array',
+            'installments.*' => 'required_if:type,==,0|array',
+            'installments.*.due_date' => 'required_if:type,==,0|date_format:Y-m-d',
+            'installments.*.value' => 'required_if:type,==,0|numeric',
+            'installments.*.status' => 'required_if:type,==,0|numeric',
         ];
     }
 

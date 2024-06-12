@@ -26,6 +26,7 @@ class SaleResource extends JsonResource
             'localed_status' => optional($this->status)->trans(),
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),
+            'installments' => SaleInstallmentsResource::collection($this->installments)
         ];
     }
 }

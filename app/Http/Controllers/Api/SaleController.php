@@ -29,7 +29,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::latest()->get();
+        $sales = Sale::where(function ($query) {
+            $query->where('salesman_id', auth()->id())->orWhere('salesman_assistant_id', auth()->id());
+        })->latest()->get();
 
         return response()->json([
             'status' => true,
@@ -70,7 +72,9 @@ class SaleController extends Controller
             'status' => $request->type == SaleTypeEnum::CASH->value ? SaleStatusEnum::COMPLETED->value : SaleStatusEnum::INSTALLMENTS_BEING_PAID->value,
         ]);
 
-        $this->saleService->saveInstallments($sale->id, $request->installments);
+        if ($sale->type == SaleTypeEnum::INSTALLMENT) {
+            $this->saleService->saveInstallments($sale->id, $request->installments);
+        }
 
         return response()->json([
             'status' => true,

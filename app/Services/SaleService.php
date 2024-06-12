@@ -74,9 +74,9 @@ class SaleService
             SaleInstallment::create([
                 'sale_id' => $sale_id,
                 'title' => $this->getInstallmentName($key),
-                'value' => $installment->value,
-                'due_date' => $installment->due_date,
-                'status' => $installment->status
+                'value' => $installment['value'],
+                'due_date' => $installment['due_date'],
+                'status' => $installment['status']
             ]);
         }
 
