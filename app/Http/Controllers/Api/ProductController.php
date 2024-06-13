@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::active()->latest()->get();
+        $products = Product::filter()->active()->latest()->get();
 
         return response()->json([
             'status' => true,

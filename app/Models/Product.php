@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\ProductStatusEnum;
+use App\Http\Filters\Filterable;
+use App\Http\Filters\ProductFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,6 +18,7 @@ class Product extends Model implements HasMedia
     use HasFactory;
     use HasTranslations;
     use InteractsWithMedia;
+    use Filterable;
     use SoftDeletes;
 
     protected $fillable = [
@@ -38,6 +41,13 @@ class Product extends Model implements HasMedia
     protected $casts = [
         'status' => ProductStatusEnum::class,
     ];
+
+    /**
+     * The filter class name.
+     *
+     * @var string
+     */
+    protected $filter = ProductFilter::class;
 
     public const MEDIA_COLLECTION_NAME = 'product_avatar';
     public const MEDIA_COLLECTION_URL = 'dashboard/images/product.png';
