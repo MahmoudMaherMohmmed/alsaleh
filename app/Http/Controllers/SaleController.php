@@ -10,10 +10,14 @@ class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        //
+        $sales = Sale::latest()->get();
+
+        return view('dashboard.sales.index', compact('sales'));
     }
 
     /**
@@ -34,10 +38,13 @@ class SaleController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param \App\Models\Sale $sale
+     * @return \Illuminate\View\View
      */
     public function show(Sale $sale)
     {
-        //
+        return view('dashboard.sales.show', compact('sale'));
     }
 
     /**

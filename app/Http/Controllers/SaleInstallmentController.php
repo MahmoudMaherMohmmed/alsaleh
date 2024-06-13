@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Dashboard\StoreSaleInstallmentRequest;
+use App\Http\Requests\Dashboard\UpdateSaleInstallmentRequest;
 use App\Models\SaleInstallment;
-use App\Http\Requests\StoreSaleInstallmentRequest;
-use App\Http\Requests\UpdateSaleInstallmentRequest;
 
 class SaleInstallmentController extends Controller
 {

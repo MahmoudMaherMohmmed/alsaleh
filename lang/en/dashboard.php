@@ -5,5 +5,5 @@ return [
     'id' => 'ID',
     'home' => 'Home',
     'users' => 'Users',
-    'application' => 'Application',
+    'application' => 'Application Settings',
 ];

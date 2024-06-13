@@ -45,9 +45,12 @@
             @include('dashboard.salesmen.partials.actions.sidebar')
             @include('dashboard.customers.partials.actions.sidebar')
 
+            <li class="side-item side-item-category">{{ __('sales.plural') }}</li>
+            @include('dashboard.car_salesmen.partials.actions.sidebar')
+            @include('dashboard.sales.partials.actions.sidebar')
+
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
             @include('dashboard.cars.partials.actions.sidebar')
-            @include('dashboard.car_salesmen.partials.actions.sidebar')
             @include('dashboard.products.partials.actions.sidebar')
             @include('dashboard.notifications.partials.actions.sidebar')
             @include('dashboard.settings.partials.actions.sidebar')

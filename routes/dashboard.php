@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductInstallmentController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -29,12 +30,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('salesmen', SalesmanController::class);
     Route::resource('customers', CustomerController::class);
 
+    //Sales
+    Route::resource('car_salesmen', CarSalesmanController::class);
+    Route::resource('sales', SaleController::class)->only('index', 'show');
+
     //Application settings
     Route::resource('products', ProductController::class);
     Route::get('products/{product}/installments', [ProductController::class, 'installments'])->name('products.installments');
     Route::resource('product_installments', ProductInstallmentController::class)->only(['store', 'update', 'destroy']);
     Route::resource('cars', CarController::class);
-    Route::resource('car_salesmen', CarSalesmanController::class);
     Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store']);
     Route::resource('settings', SettingController::class)->only(['index', 'show', 'edit', 'update']);
 });

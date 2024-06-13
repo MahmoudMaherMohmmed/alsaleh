@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('title') {{__('car_salesmen.plural')}} @endsection
+@section('title') {{__('sales.plural')}} @endsection
 
 @section('css')
     <!-- Internal Data table css -->
@@ -18,11 +18,8 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('sales.plural') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('car_salesmen.plural') }}</span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('sales.plural') }}</span>
             </div>
-        </div>
-        <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.car_salesmen.partials.actions.create')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -39,30 +36,42 @@
                         <table class="table text-md-nowrap" id="example2">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.car') }}</th>
-                                    <th class="wd-20p border-bottom-0">{{ __('car_salesmen.attributes.salesman') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.salesman_assistant') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.attributes.start_date') }} / {{ __('car_salesmen.attributes.end_date') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_salesmen.actions.actions') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.customer_id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.salesman_id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.product_id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.type') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.status') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.attributes.date') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('sales.actions.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($car_salesmen as $car_salesman)
+                                @foreach($sales as $sale)
                                     <tr>
-                                        <td>{{$car_salesman->id}}</td>
-                                        <td>{{$car_salesman->car->title}}</td>
-                                        <td>{{$car_salesman->salesman->name}}</td>
-                                        <td>{{$car_salesman->salesman_assistant->name}}</td>
-                                        <td>{{$car_salesman->start_date}} / {{$car_salesman->end_date}}</td>
+                                        <td>{{$sale->id}}</td>
                                         <td>
-                                            @include('dashboard.car_salesmen.partials.actions.show')
-                                            @include('dashboard.car_salesmen.partials.actions.edit')
-                                            @include('dashboard.car_salesmen.partials.actions.delete')
+                                            <a href="{{ route('customers.show', $sale->customer) }}" target="_blank">{{$sale->customer->name}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('salesmen.show', $sale->salesman) }}" target="_blank">{{$sale->salesman->name}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('products.show', $sale->product) }}" target="_blank">
+                                                {{$sale->product->getTranslation('title', app()->getLocale())}}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span class="badge {{$sale->type->color()}}">{{$sale->type->trans()}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {{$sale->status->color()}}">{{$sale->status->trans()}}</span>
+                                        </td>
+                                        <td>{{$sale->date}}</td>
+                                        <td>
+                                            @include('dashboard.sales.partials.actions.show')
                                         </td>
                                     </tr>
-
-                                    @include('dashboard.car_salesmen.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>
