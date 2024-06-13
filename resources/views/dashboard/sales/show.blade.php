@@ -135,7 +135,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example2">
+                        <table class="table text-md-nowrap" id="example1">
                             <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">{{ __('sale_installments.attributes.id') }}</th>
@@ -143,7 +143,6 @@
                                 <th class="wd-15p border-bottom-0">{{ __('sale_installments.attributes.value') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('sale_installments.attributes.due_date') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('sale_installments.attributes.status') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('sale_installments.actions.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -156,14 +155,7 @@
                                     <td>
                                         <span class="badge {{$sale_installment->status->color()}}">{{$sale_installment->status->trans()}}</span>
                                     </td>
-                                    <td>
-{{--                                        @include('dashboard.sale_installments.partials.actions.edit')--}}
-{{--                                        @include('dashboard.sale_installments.partials.actions.delete')--}}
-                                    </td>
                                 </tr>
-
-{{--                                @include('dashboard.sale_installments.partials.models.edit')--}}
-{{--                                @include('dashboard.sale_installments.partials.models.delete')--}}
                             @endforeach
                             </tbody>
                         </table>
