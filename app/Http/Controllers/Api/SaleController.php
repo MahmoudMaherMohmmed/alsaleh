@@ -74,7 +74,7 @@ class SaleController extends Controller
         ]);
 
         if ($sale->type == SaleTypeEnum::INSTALLMENT) {
-            $this->saleService->saveInstallments($sale->id, $request->installments);
+            $this->saleService->saveInstallments($sale, $request->installments);
         }
 
         return response()->json([
@@ -110,7 +110,7 @@ class SaleController extends Controller
     {
         $sale->installments()->forceDelete();
 
-        $this->saleService->saveInstallments($sale->id, $request->installments);
+        $this->saleService->saveInstallments($sale, $request->installments);
 
         return response()->json([
             'status' => true,

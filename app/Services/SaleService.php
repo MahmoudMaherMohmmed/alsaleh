@@ -2,12 +2,13 @@
 
 namespace App\Services;
 
+use App\Enums\SaleInstallmentStatusEnum;
+use App\Enums\SaleStatusEnum;
 use App\Models\CarSalesman;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\SaleInstallment;
 use App\Models\Setting;
-use Illuminate\Support\Facades\DB;
 
 class SaleService
 {
@@ -68,16 +69,20 @@ class SaleService
         return number_format((Product::where('id', $product_id)->first()->salesman_profit * $this->getSalesmanAssistantProfitPercentage()) / 100, 2);
     }
 
-    public function saveInstallments($sale_id, $installments)
+    public function saveInstallments($sale, $installments)
     {
         foreach ($installments as $key => $installment) {
             SaleInstallment::create([
-                'sale_id' => $sale_id,
+                'sale_id' => $sale->id,
                 'title' => $this->getInstallmentName($key),
                 'value' => $installment['value'],
                 'due_date' => $installment['due_date'],
                 'status' => $installment['status']
             ]);
+        }
+
+        if (!$sale->installments()->where('status', SaleInstallmentStatusEnum::UNPAID)->exists()) {
+            $sale->update(['status'=>SaleStatusEnum::COMPLETED->value]);
         }
 
         return true;
