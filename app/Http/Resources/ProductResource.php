@@ -15,6 +15,7 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         return [
+			'id' => $this->id,
             'title' => $this->getTranslation('title', app()->getLocale()),
             'description' => $this->getTranslation('description', app()->getLocale()),
             'serial_number' => $this->serial_number,
