@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarSalesmanController;
 use App\Http\Controllers\CustomerController;
@@ -28,6 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::resource('users', UserController::class);
     Route::resource('salesmen', SalesmanController::class);
+    Route::resource('areas', AreaController::class);
     Route::resource('customers', CustomerController::class);
 
     //Sales
