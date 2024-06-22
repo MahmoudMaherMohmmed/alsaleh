@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AreaController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\NotificationController;
@@ -33,6 +34,9 @@ Route::middleware('localization')->group(function () {
         Route::get('products', [ProductController::class, 'index']);
         Route::get('products/{product}', [ProductController::class, 'show']);
 
+
+        //Areas
+        Route::get('areas', [AreaController::class, 'index']);
 
         //Customers
         Route::get('customers', [CustomerController::class, 'index']);
