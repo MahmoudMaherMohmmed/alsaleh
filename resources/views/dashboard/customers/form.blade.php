@@ -40,6 +40,17 @@
                         <div class="row row-sm">
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label class="form-label">{{ __('car_salesmen.attributes.salesman') }} <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2" name="salesman_id" required="" {{$customer!=null ? 'disabled' : ''}}>
+                                        <option></option>
+                                        @foreach($salesmen as $salesman)
+                                            <option value="{{$salesman->id}}" {{($customer!=null && $customer->salesman_id==$salesman->id) || (old('salesman_id') == $salesman->id) ? 'selected' : ''}}> {{ $salesman->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('customers.attributes.name') }} <span class="tx-danger">*</span></label>
                                     <input class="form-control" name="name" placeholder="{{ __('customers.attributes.name') }}" value="{{$customer!=null ? $customer->name : old('name')}}" required="" type="text">
                                 </div>
@@ -54,6 +65,17 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('customers.attributes.phone_2') }}</label>
                                     <input class="form-control" name="phone_2" placeholder="{{ __('customers.attributes.phone_2') }}" value="{{$customer!=null ? $customer->phone_2 : old('phone_2')}}" type="text">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('areas.singular') }} <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2" name="area_id" required="">
+                                        <option></option>
+                                        @foreach($areas as $area)
+                                            <option value="{{$area->id}}" {{($customer!=null && $customer->area_id==$area->id) || (old('area_id') == $area->id)? 'selected' : ''}}> {{ $area->title }} </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -80,7 +102,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('customers.attributes.status') }} <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2-no-search" name="status" require="">
+                                    <select class="form-control select2-no-search" name="status" required="">
                                         @foreach(App\Enums\CustomerStatusEnum::options() as $key=>$value)
                                             <option value="{{$key}}" {{$customer!=null && $customer->status->value==$key ? 'selected' : ''}}> {{ $value }} </option>
                                         @endforeach

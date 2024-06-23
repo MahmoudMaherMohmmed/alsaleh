@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -77,6 +78,14 @@ class Client extends Authenticatable implements HasMedia
     public function getAvatar()
     {
         return $this->getFirstMediaUrl(self::AVATAR_COLLECTION_NAME);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function customers(): HasMany
+    {
+        return $this->hasMany(Customer::class);
     }
 
     public function scopeActive($query)

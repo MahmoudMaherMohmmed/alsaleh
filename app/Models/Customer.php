@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\CustomerStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -16,9 +17,12 @@ class Customer extends Model implements HasMedia
     use SoftDeletes;
 
     protected $fillable = [
+        'salesman_id',
+        'reference_id',
         'name',
         'phone',
         'phone_2',
+        'area_id',
         'address',
         'lat',
         'lng',
@@ -44,6 +48,22 @@ class Customer extends Model implements HasMedia
     public function getVoiceAddress()
     {
         return $this->getFirstMediaUrl(self::MEDIA_VOICE_ADDRESS_NAME);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function salesman(): BelongsTo
+    {
+        return $this->belongsTo(Client::class, 'salesman_id')->withTrashed();
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class)->withTrashed();
     }
 
     public function scopeActive($query)

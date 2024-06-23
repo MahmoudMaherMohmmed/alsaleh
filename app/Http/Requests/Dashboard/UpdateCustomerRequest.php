@@ -25,6 +25,7 @@ class UpdateCustomerRequest extends FormRequest
             'name' => 'required|string',
             'phone' => 'required|string|unique:customers,phone,' . $this->customer->id,
             'phone_2' => 'nullable|string',
+            'area_id' => 'required|exists:areas,id',
             'address' => 'required|string',
             'lat' => 'nullable|string',
             'lng' => 'nullable|string',

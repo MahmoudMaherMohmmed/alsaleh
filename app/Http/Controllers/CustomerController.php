@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ClientTypeEnum;
 use App\Http\Requests\Dashboard\StoreCustomerRequest;
 use App\Http\Requests\Dashboard\UpdateCustomerRequest;
+use App\Models\Area;
+use App\Models\Client;
 use App\Models\Customer;
 
 class CustomerController extends Controller
@@ -27,7 +30,11 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('dashboard.customers.form', ['customer' => null]);
+        $customer = null;
+        $areas = Area::active()->latest()->get();
+        $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->latest()->get();
+
+        return view('dashboard.customers.form', compact('customer', 'areas', 'salesmen'));
     }
 
     /**
@@ -38,7 +45,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        $customer = Customer::create($request->validated());
+        $customer = Customer::create(array_merge($request->validated(), ['reference_id' => customer_new_reference_id($request->salesman_id)]));
 
         return redirect()->route('customers.show', $customer)->with('success', trans('customers.messages.created'));
     }
@@ -62,7 +69,10 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('dashboard.customers.form', compact('customer'));
+        $areas = Area::latest()->get();
+        $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->latest()->get();
+
+        return view('dashboard.customers.form', compact('customer', 'areas', 'salesmen'));
     }
 
     /**

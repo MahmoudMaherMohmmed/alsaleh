@@ -26,9 +26,12 @@ return [
     ],
     'attributes' => [
         'id' => 'ID',
+        'salesman_id' => 'Salesman',
+        'reference_id' => 'Reference ID',
         'name' => 'Name',
         'phone' => 'Phone',
         'phone_2' => 'Phone',
+        'area_id' => 'Area',
         'address' => 'Address',
         'lat' => 'Latitude',
         'lng' => 'longitude',

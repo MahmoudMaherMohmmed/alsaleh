@@ -40,6 +40,9 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('customers.attributes.id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('customers.attributes.reference_id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('salesmen.singular') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('areas.singular') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('customers.attributes.name') }}</th>
                                     <th class="wd-20p border-bottom-0">{{ __('customers.attributes.phone') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('customers.attributes.status') }}</th>
@@ -51,6 +54,13 @@
                                 @foreach($customers as $customer)
                                     <tr>
                                         <td>{{$customer->id}}</td>
+                                        <td>{{$customer->reference_id}}</td>
+                                        <td>
+                                            <a href="{{ route('salesmen.show', $customer->salesman) }}" target="_blank">{{$customer->salesman->name}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('areas.show', $customer->area) }}" target="_blank">{{$customer->area->title}}</a>
+                                        </td>
                                         <td>{{$customer->name}}</td>
                                         <td>{{$customer->phone}}</td>
                                         <td>

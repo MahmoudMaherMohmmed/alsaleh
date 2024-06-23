@@ -33,6 +33,16 @@
                                     <td>{{$customer->id}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('customers.attributes.reference_id') }}</th>
+                                    <td>{{$customer->reference_id}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('salesmen.singular') }}</th>
+                                    <td>
+                                        <a href="{{ route('salesmen.show', $customer->salesman) }}" target="_blank">{{$customer->salesman->name}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('customers.attributes.name') }}</th>
                                     <td>{{$customer->name}}</td>
                                 </tr>
@@ -43,6 +53,12 @@
                                 <tr>
                                     <th scope="row">{{ __('customers.attributes.phone_2') }}</th>
                                     <td>{{$customer->phone_2}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('areas.singular') }}</th>
+                                    <td>
+                                        <a href="{{ route('areas.show', $customer->area) }}" target="_blank">{{$customer->area->title}}</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{{ __('customers.attributes.address') }}</th>

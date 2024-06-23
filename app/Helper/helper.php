@@ -44,3 +44,14 @@ function fcm_notification($firebase_id, $title, $body)
 
     return true;
 }
+
+function customer_new_reference_id($salesman_id)
+{
+    $last_salesman_customer = App\Models\Customer::where('salesman_id', $salesman_id)->latest()->first();
+
+    if($last_salesman_customer!=null){
+        return $last_salesman_customer->reference_id + 1;
+    }else{
+        return 1;
+    }
+}
