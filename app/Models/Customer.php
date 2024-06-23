@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\CustomerStatusEnum;
+use App\Http\Filters\CustomerFilter;
+use App\Http\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +16,7 @@ class Customer extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use Filterable;
     use SoftDeletes;
 
     protected $fillable = [
@@ -37,6 +40,13 @@ class Customer extends Model implements HasMedia
     protected $casts = [
         'status' => CustomerStatusEnum::class,
     ];
+
+    /**
+     * The filter class name.
+     *
+     * @var string
+     */
+    protected $filter = CustomerFilter::class;
 
     public const MEDIA_VOICE_ADDRESS_NAME = 'customer_address';
 

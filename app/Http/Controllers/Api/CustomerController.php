@@ -15,7 +15,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
+        $customers = Customer::where('salesman_id', auth()->id())->filter()->latest()->get();
 
         return response()->json([
             'status' => true,
