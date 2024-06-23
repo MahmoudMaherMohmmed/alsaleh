@@ -8,6 +8,7 @@ use App\Http\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -74,6 +75,14 @@ class Customer extends Model implements HasMedia
     public function area(): BelongsTo
     {
         return $this->belongsTo(Area::class)->withTrashed();
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function sales(): HasMany
+    {
+        return $this->hasMany(Sale::class);
     }
 
     public function scopeActive($query)

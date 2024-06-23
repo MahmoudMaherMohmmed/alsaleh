@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::filter()->active()->latest()->get();
+        $products = Product::with('installments')->filter()->active()->latest()->get();
 
         return response()->json([
             'status' => true,
@@ -35,7 +35,7 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'message' => trans('products.messages.retrieved'),
-            'data' => new ProductResource($product)
+            'data' => new ProductResource($product->load('installments'))
         ], 200);
     }
 }

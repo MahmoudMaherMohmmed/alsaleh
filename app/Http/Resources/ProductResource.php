@@ -15,7 +15,7 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         return [
-			'id' => $this->id,
+            'id' => $this->id,
             'title' => $this->getTranslation('title', app()->getLocale()),
             'description' => $this->getTranslation('description', app()->getLocale()),
             'serial_number' => $this->serial_number,
@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
             'image' => $this->getImage(),
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),
-            'installments' => ProductInstallmentsResource::collection($this->installments ?? [])
+            'installments' => ProductInstallmentsResource::collection($this->whenLoaded('installments'))
         ];
     }
 }

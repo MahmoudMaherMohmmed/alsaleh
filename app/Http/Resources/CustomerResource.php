@@ -29,6 +29,7 @@ class CustomerResource extends JsonResource
             'voice_address' => $this->getVoiceAddress(),
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),
+            'sales' => SaleResource::collection($this->whenLoaded('sales')),
         ];
     }
 }

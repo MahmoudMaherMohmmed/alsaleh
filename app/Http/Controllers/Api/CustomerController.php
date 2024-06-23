@@ -35,7 +35,7 @@ class CustomerController extends Controller
         return response()->json([
             'status' => true,
             'message' => trans('customers.messages.retrieved'),
-            'data' => new CustomerResource($customer)
+            'data' => new CustomerResource($customer->load('sales'))
         ], 200);
     }
 }

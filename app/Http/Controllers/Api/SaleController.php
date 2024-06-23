@@ -30,7 +30,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::where(function ($query) {
+        $sales = Sale::with('customer')->where(function ($query) {
             $query->where('salesman_id', auth()->id())->orWhere('salesman_assistant_id', auth()->id());
         })->latest()->get();
 
@@ -95,7 +95,7 @@ class SaleController extends Controller
         return response()->json([
             'status' => true,
             'message' => trans('sales.messages.retrieved'),
-            'data' => new SaleResource($sale)
+            'data' => new SaleResource($sale->load('customer'))
         ], 200);
     }
 
