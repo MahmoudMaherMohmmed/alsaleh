@@ -27,6 +27,7 @@ class StoreSaleRequest extends FormRequest
             'customer_name' => 'required|string',
             'customer_phone' => 'required|string',
             'customer_phone_2' => 'nullable|string',
+            'customer_area_id' => 'required|integer|exists:areas,id',
             'customer_address' => 'nullable|string',
             'customer_lat' => 'required|string',
             'customer_lng' => 'required|string',

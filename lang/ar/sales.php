@@ -31,6 +31,7 @@ return [
         'customer_name' => 'أسم العميل',
         'customer_phone' => 'رقم هاتف العميل',
         'customer_phone_2' => 'رقم هاتف العميل',
+        'customer_area_id' => 'منطقة العميل',
         'customer_address' => 'عنوان العميل',
         'customer_lat' => 'خطوط الطول',
         'customer_lng' => 'دوائر العرض',

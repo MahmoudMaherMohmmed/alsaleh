@@ -31,6 +31,7 @@ return [
         'customer_name' => 'Customer name',
         'customer_phone' => 'Customer phone',
         'customer_phone_2' => 'Customer phone',
+        'customer_area_id' => 'Customer area',
         'customer_address' => 'Customer address',
         'customer_lat' => 'Customer latitude',
         'customer_lng' => 'Customer Longitude',

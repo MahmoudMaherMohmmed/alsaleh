@@ -14,15 +14,32 @@ class SaleService
 {
     public function saveCustomer($request)
     {
-        $customer = Customer::updateOrCreate(['phone' => $request->customer_phone], [
-            'name' => $request->customer_name,
-            'phone_2' => $request->customer_phone_2,
-            'address' => $request->customer_address,
-            'lat' => $request->customer_lat,
-            'lng' => $request->customer_lng,
-        ]);
+        $customer = Customer::where(['salesman_id' => auth()->id(), 'phone' => trim($request->customer_phone)])->first();
+        if ($customer != null) {
+            $customer->update([
+                'name' => $request->customer_name,
+                'phone_2' => $request->customer_phone_2,
+                'area_id' => $request->customer_area_id,
+                'address' => $request->customer_address,
+                'lat' => $request->customer_lat,
+                'lng' => $request->customer_lng,
+            ]);
+        } else {
+            $customer = Customer::create([
+                'salesman_id' => auth()->id(),
+                'reference_id' => customer_new_reference_id(auth()->id()),
+                'name' => $request->customer_name,
+                'phone' => $request->customer_phone,
+                'phone_2' => $request->customer_phone_2,
+                'area_id' => $request->customer_area_id,
+                'address' => $request->customer_address,
+                'lat' => $request->customer_lat,
+                'lng' => $request->customer_lng,
+            ]);
+        }
 
         if ($request->hasFile('customer_address_voice') && $request->file('customer_address_voice')->isValid()) {
+            $customer->clearMediaCollection(Customer::MEDIA_VOICE_ADDRESS_NAME);
             $customer->addMediaFromRequest('customer_address_voice')
                 ->toMediaCollection(Customer::MEDIA_VOICE_ADDRESS_NAME);
         }
@@ -82,7 +99,7 @@ class SaleService
         }
 
         if (!$sale->installments()->where('status', SaleInstallmentStatusEnum::UNPAID)->exists()) {
-            $sale->update(['status'=>SaleStatusEnum::COMPLETED->value]);
+            $sale->update(['status' => SaleStatusEnum::COMPLETED->value]);
         }
 
         return true;
