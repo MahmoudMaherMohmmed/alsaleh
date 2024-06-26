@@ -8,7 +8,7 @@ return [
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'plural' => 'Actions',
-        'list' => 'List warehouses',
+        'list' => 'List warehouse products',
         'show' => 'Show warehouse',
         'create' => 'Create new products to warehouse',
         'new' => 'New',

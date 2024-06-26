@@ -78,7 +78,7 @@ class WarehouseController extends Controller
      */
     public function show(Warehouse $warehouse)
     {
-        return view('dashboard.warehouses.show', compact('warehouse'));
+        //
     }
 
     /**
@@ -113,5 +113,17 @@ class WarehouseController extends Controller
     public function destroy(Warehouse $warehouse)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function tracking()
+    {
+        $warehouse_trackings = WarehouseTracking::latest()->get();
+
+        return view('dashboard.warehouses.show', compact('warehouse_trackings'));
     }
 }

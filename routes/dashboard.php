@@ -34,7 +34,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('customers', CustomerController::class);
 
     //Warehouse
-    Route::resource('warehouses', WarehouseController::class)->only(['index', 'create', 'store', 'show']);
+    Route::resource('warehouses', WarehouseController::class)->only(['index', 'create', 'store']);
+    Route::get('warehouse_tracking', [warehouseController::class, 'tracking'])->name('warehouses.tracking');
 
     //Sales
     Route::resource('car_salesmen', CarSalesmanController::class);

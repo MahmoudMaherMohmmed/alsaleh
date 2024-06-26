@@ -45,6 +45,9 @@
             @include('dashboard.salesmen.partials.actions.sidebar')
             @include('dashboard.customers.partials.actions.sidebar')
 
+            <li class="side-item side-item-category">{{ __('warehouses.plural') }}</li>
+            @include('dashboard.warehouses.partials.actions.sidebar')
+
             <li class="side-item side-item-category">{{ __('sales.plural') }}</li>
             @include('dashboard.car_salesmen.partials.actions.sidebar')
             @include('dashboard.sales.partials.actions.sidebar')

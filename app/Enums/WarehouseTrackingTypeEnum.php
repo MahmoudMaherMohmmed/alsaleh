@@ -18,8 +18,8 @@ enum WarehouseTrackingTypeEnum: int
     public function trans(): string
     {
         return match ($this) {
-            self::RETURNED => trans('warehouse_trackings.status.' . self::RETURNED->name),
-            self::NEW => trans('warehouse_trackings.status.' . self::NEW->name),
+            self::RETURNED => trans('warehouse_trackings.type.' . self::RETURNED->name),
+            self::NEW => trans('warehouse_trackings.type.' . self::NEW->name),
         };
     }
 
@@ -36,11 +36,11 @@ enum WarehouseTrackingTypeEnum: int
         return [
             [
                 'id' => self::RETURNED,
-                'value' => trans('warehouse_trackings.status.' . self::RETURNED->name)
+                'value' => trans('warehouse_trackings.type.' . self::RETURNED->name)
             ],
             [
                 'id' => self::NEW,
-                'value' => trans('warehouse_trackings.status.' . self::NEW->name)
+                'value' => trans('warehouse_trackings.type.' . self::NEW->name)
             ]
         ];
     }
@@ -48,8 +48,8 @@ enum WarehouseTrackingTypeEnum: int
     public static function options(): array
     {
         return [
-            self::NEW->value => trans('warehouse_trackings.status.' . self::NEW->name),
-            self::RETURNED->value => trans('warehouse_trackings.status.' . self::RETURNED->name),
+            self::NEW->value => trans('warehouse_trackings.type.' . self::NEW->name),
+            self::RETURNED->value => trans('warehouse_trackings.type.' . self::RETURNED->name),
         ];
     }
 }
