@@ -1,14 +1,17 @@
 @extends('dashboard.layouts.master')
 
-@section('title') {{__('salesmen.plural')}} @endsection
+@section('title')
+    {{__('salesmen.plural')}}
+@endsection
 
 @section('css')
     <!--- Internal Select2 css-->
     <link href="{{URL::asset('dashboard/assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <!---Internal Fileupload css-->
-    <link href="{{URL::asset('dashboard/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{URL::asset('dashboard/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet"
+          type="text/css"/>
     <!---Internal Fancy uploader css-->
-    <link href="{{URL::asset('dashboard/assets/plugins/fancyuploder/fancy_fileupload.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('dashboard/assets/plugins/fancyuploder/fancy_fileupload.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('page-header')
@@ -17,11 +20,13 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('dashboard.users') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('salesmen.index') }}">{{ __('salesmen.plural') }}</a></span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a
+                        href="{{ route('salesmen.index') }}">{{ __('salesmen.plural') }}</a></span>
                 @if($salesman!=null)
                     <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{$salesman->name}}</span>
                 @endif
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ $salesman!=null ? __('salesmen.actions.edit') : __('salesmen.actions.create') }}</span>
+                <span
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ $salesman!=null ? __('salesmen.actions.edit') : __('salesmen.actions.create') }}</span>
             </div>
         </div>
     </div>
@@ -34,59 +39,105 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{$salesman!=null ? route('salesmen.update', $salesman->id) : route('salesmen.store')}}" enctype="multipart/form-data" data-parsley-validate="">
+                    <form method="post"
+                          action="{{$salesman!=null ? route('salesmen.update', $salesman->id) : route('salesmen.store')}}"
+                          enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
-                        @if($salesman!=null) @method('PUT') @endif
+                        @if($salesman!=null)
+                            @method('PUT')
+                        @endif
                         <div class="row row-sm">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.name') }} <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="name" placeholder="{{ __('salesmen.attributes.name') }}" value="{{$salesman!=null ? $salesman->name : old('name')}}" required="" type="text">
+                                    <label class="form-label">{{ __('salesmen.attributes.name') }} <span
+                                            class="tx-danger">*</span></label>
+                                    <input class="form-control" name="name"
+                                           placeholder="{{ __('salesmen.attributes.name') }}"
+                                           value="{{$salesman!=null ? $salesman->name : old('name')}}" required=""
+                                           type="text">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.email') }} <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="email" placeholder="{{ __('salesmen.attributes.email') }}" value="{{$salesman!=null ? $salesman->email : old('email')}}" required="" type="email">
+                                    <label class="form-label">{{ __('salesmen.attributes.email') }} <span
+                                            class="tx-danger">*</span></label>
+                                    <input class="form-control" name="email"
+                                           placeholder="{{ __('salesmen.attributes.email') }}"
+                                           value="{{$salesman!=null ? $salesman->email : old('email')}}" required=""
+                                           type="email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.phone') }} <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="phone" placeholder="{{ __('salesmen.attributes.phone') }}" value="{{$salesman!=null ? $salesman->phone : old('phone')}}" required="" type="text">
+                                    <label class="form-label">{{ __('salesmen.attributes.phone') }} <span
+                                            class="tx-danger">*</span></label>
+                                    <input class="form-control" name="phone"
+                                           placeholder="{{ __('salesmen.attributes.phone') }}"
+                                           value="{{$salesman!=null ? $salesman->phone : old('phone')}}" required=""
+                                           type="text">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.password') }} @if($salesman==null)<span class="tx-danger">*</span>@endif</label>
-                                    <input class="form-control" name="password" placeholder="{{ __('salesmen.attributes.password') }}" {{$salesman== null ? 'required' : ''}} type="password">
+                                    <label
+                                        class="form-label">{{ __('salesmen.attributes.password') }} @if($salesman==null)
+                                            <span class="tx-danger">*</span>
+                                        @endif</label>
+                                    <input class="form-control" name="password"
+                                           placeholder="{{ __('salesmen.attributes.password') }}"
+                                           {{$salesman== null ? 'required' : ''}} type="password">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.password_confirmation') }} @if($salesman==null)<span class="tx-danger">*</span>@endif</label>
-                                    <input class="form-control" name="password_confirmation" placeholder="{{ __('salesmen.attributes.password_confirmation') }}" {{$salesman== null ? 'required' : ''}} type="password">
+                                    <label
+                                        class="form-label">{{ __('salesmen.attributes.password_confirmation') }} @if($salesman==null)
+                                            <span class="tx-danger">*</span>
+                                        @endif</label>
+                                    <input class="form-control" name="password_confirmation"
+                                           placeholder="{{ __('salesmen.attributes.password_confirmation') }}"
+                                           {{$salesman== null ? 'required' : ''}} type="password">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.avatar') }} <span class="tx-danger">*</span></label>
-                                    <input type="file" name="image" class="dropify" data-default-file="{{$salesman!=null ? $salesman->getAvatar() : ''}}" data-height="200" />
+                                    <label class="form-label">{{ __('salesmen.attributes.avatar') }} <span
+                                            class="tx-danger">*</span></label>
+                                    <input type="file" name="image" class="dropify"
+                                           data-default-file="{{$salesman!=null ? $salesman->getAvatar() : ''}}"
+                                           data-height="200"/>
                                 </div>
                             </div>
-
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('salesmen.attributes.status') }} <span class="tx-danger">*</span></label>
+                                    <label class="form-label">{{ __('salesmen.attributes.report_filters_status') }}
+                                        <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2-no-search" name="report_filters_status"
+                                            require="">
+                                        @foreach(App\Enums\ClientReportFiltersStatusEnum::options() as $key=>$value)
+                                            <option
+                                                value="{{$key}}" {{$salesman!=null && $salesman->report_filters_status->value==$key ? 'selected' : ''}}> {{ $value }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('salesmen.attributes.status') }} <span
+                                            class="tx-danger">*</span></label>
                                     <select class="form-control select2-no-search" name="status" require="">
                                         @foreach(App\Enums\ClientStatusEnum::options() as $key=>$value)
-                                            <option value="{{$key}}" {{$salesman!=null && $salesman->status->value==$key ? 'selected' : ''}}> {{ $value }} </option>
+                                            <option
+                                                value="{{$key}}" {{$salesman!=null && $salesman->status->value==$key ? 'selected' : ''}}> {{ $value }} </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-12"><button class="btn btn-main-primary pd-x-20 mg-t-10" type="submit">{{ $salesman!=null ? __('salesmen.actions.edit') : __('salesmen.actions.save') }}</button></div>
+                            <div class="col-12">
+                                <button class="btn btn-main-primary pd-x-20 mg-t-10"
+                                        type="submit">{{ $salesman!=null ? __('salesmen.actions.edit') : __('salesmen.actions.save') }}</button>
+                            </div>
                         </div>
                     </form>
                 </div>

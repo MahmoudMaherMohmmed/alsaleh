@@ -22,6 +22,8 @@ class ClientResource extends JsonResource
             'type' => $this->type,
             'localed_type' => optional($this->type)->trans(),
             'image' => $this->getAvatar(),
+            'report_filters_status' => $this->report_filters_status,
+            'localed_report_filters_status' => optional($this->report_filters_status)->trans(),
             "activation_code" => $this->activation_code,
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),

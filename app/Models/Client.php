@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ClientReportFiltersStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,6 +34,7 @@ class Client extends Authenticatable implements HasMedia
         'email',
         'password',
         'type',
+        'report_filters_status',
         'status',
         'activation_code',
         'device_token',
@@ -62,6 +64,7 @@ class Client extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'type' => ClientTypeEnum::class,
+        'report_filters_status' => ClientReportFiltersStatusEnum::class,
         'status' => ClientStatusEnum::class,
     ];
 

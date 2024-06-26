@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ClientReportFiltersStatusEnum;
 use App\Enums\ClientStatusEnum;
 use App\Enums\ClientTypeEnum;
 use Illuminate\Database\Migrations\Migration;
@@ -20,6 +21,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('type')->default(ClientTypeEnum::SALES_MAN->value);
+            $table->boolean('report_filters_status')->default(ClientReportFiltersStatusEnum::DISABLE->value);
             $table->boolean('status')->default(ClientStatusEnum::ACTIVE->value);
             $table->string('activation_code')->nullable();
             $table->string('device_token')->nullable();

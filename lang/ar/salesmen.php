@@ -34,6 +34,7 @@ return [
         'password' => 'كلمة المرور',
         'password_confirmation' => 'تأكيد كلمة المرور',
         'avatar' => 'الصورة الشخصية',
+        'report_filters_status' => 'فلتر التقارير',
         'status' => 'الحالة'
     ],
     'dialogs' => [

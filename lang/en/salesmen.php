@@ -34,6 +34,7 @@ return [
         'password' => 'Password',
         'password_confirmation' => 'Password Confirmation',
         'avatar' => 'Avatar',
+        'report_filters_status' => 'Report filters',
         'status' => 'Status'
     ],
     'dialogs' => [

@@ -45,6 +45,10 @@
                                     <td>{{$salesman->phone}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('salesmen.attributes.report_filters_status') }}</th>
+                                    <td> <span class="badge {{$salesman->report_filters_status->color()}}">{{$salesman->report_filters_status->trans()}}</span> </td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('salesmen.attributes.status') }}</th>
                                     <td> <span class="badge {{$salesman->status->color()}}">{{$salesman->status->trans()}}</span> </td>
                                 </tr>

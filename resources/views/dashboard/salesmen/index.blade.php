@@ -43,6 +43,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('salesmen.attributes.name') }}</th>
                                     <th class="wd-20p border-bottom-0">{{ __('salesmen.attributes.phone') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesmen.attributes.email') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('salesmen.attributes.report_filters_status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesmen.attributes.status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesmen.attributes.created_at') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesmen.actions.actions') }}</th>
@@ -55,6 +56,9 @@
                                         <td>{{$salesman->name}}</td>
                                         <td>{{$salesman->phone}}</td>
                                         <td>{{$salesman->email}}</td>
+                                        <td>
+                                            <span class="badge {{$salesman->report_filters_status->color()}}">{{$salesman->report_filters_status->trans()}}</span>
+                                        </td>
                                         <td>
                                             <span class="badge {{$salesman->status->color()}}">{{$salesman->status->trans()}}</span>
                                         </td>

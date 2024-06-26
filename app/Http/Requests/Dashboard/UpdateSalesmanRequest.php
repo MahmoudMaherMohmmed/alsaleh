@@ -28,6 +28,8 @@ class UpdateSalesmanRequest extends FormRequest
             'email' => 'required|email|unique:users,email,' . $this->salesman->id,
             'phone' => 'required|unique:users,phone,' . $this->salesman->id,
             'image' => 'mimes:jpeg,png,jpg,svg',
+            'report_filters_status' => 'required',
+            'status' => 'required',
         ];
     }
 

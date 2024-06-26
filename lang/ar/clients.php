@@ -52,6 +52,10 @@ return [
         'ACTIVE' => 'مفعل',
         'INACTIVE' => 'غير مفعل',
     ],
+    'report_filters_status' => [
+        'ENABLE' => 'ممكن',
+        'DISABLE' => 'غير ممكن',
+    ],
     'type' => [
         'SALES_MAN' => 'مندوب مبيعات'
     ]

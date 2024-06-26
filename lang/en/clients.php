@@ -51,6 +51,10 @@ return [
         'ACTIVE' => 'Active',
         'INACTIVE' => 'In active',
     ],
+    'report_filters_status' => [
+        'ENABLE' => 'Enable',
+        'DISABLE' => 'Disable',
+    ],
     'type' => [
         'SALES_MAN' => 'Salesman'
     ],

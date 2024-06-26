@@ -29,6 +29,8 @@ class StoreSalesmanRequest extends FormRequest
             'phone' => 'required|unique:users',
             'password' => 'required|min:8|confirmed',
             'image' => 'required|mimes:jpeg,png,jpg,svg',
+            'report_filters_status' => 'required',
+            'status' => 'required',
         ];
     }
 
