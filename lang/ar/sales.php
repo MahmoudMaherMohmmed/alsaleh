@@ -71,5 +71,10 @@ return [
         'RETURNED' => 'مرتجع',
         'INSTALLMENTS_BEING_PAID' => 'جارى سداد الأقساط',
         'COMPLETED' => 'مكتمل',
-    ]
+    ],
+    'report' => [
+        'total_sales_count' => 'إجمالي عدد المبيعات',
+        'total_cash_sales_count' => 'إجمالي عدد المبيعات (كاش)',
+        'total_installment_sales_count' => 'إجمالي عدد المبيعات (قسط)',
+    ],
 ];

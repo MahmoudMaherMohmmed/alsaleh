@@ -71,5 +71,10 @@ return [
         'RETURNED' => 'Returned',
         'INSTALLMENTS_BEING_PAID' => 'Installments being paid',
         'COMPLETED' => 'Completed',
-    ]
+    ],
+    'report' => [
+        'total_sales_count' => 'Total sales count',
+        'total_cash_sales_count' => 'Total cash sales count',
+        'total_installment_sales_count' => 'Total installment sales count',
+    ],
 ];

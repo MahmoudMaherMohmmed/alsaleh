@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\SaleController;
 use App\Http\Controllers\Api\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,9 @@ Route::middleware('localization')->group(function () {
         Route::post('sales/store', [SaleController::class, 'store']);
         Route::get('sales/{sale}', [SaleController::class, 'show']);
         Route::post('sales/{sale}/pay_installment', [SaleController::class, 'payInstallment']);
+
+        //Report
+        Route::get('reports', [ReportController::class, 'index']);
 
         //Notifications
         Route::get('notifications', [NotificationController::class, 'index']);
