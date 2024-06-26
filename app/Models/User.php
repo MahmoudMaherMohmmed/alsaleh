@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -68,6 +69,14 @@ class User extends Authenticatable implements HasMedia
     public function getAvatar()
     {
         return $this->getFirstMediaUrl(self::MEDIA_COLLECTION_NAME);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function warehouse_trackings(): HasMany
+    {
+        return $this->hasMany(WarehouseTracking::class);
     }
 
     public function scopeActive($query)

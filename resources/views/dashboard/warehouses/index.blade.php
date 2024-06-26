@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('title') {{__('products.plural')}} @endsection
+@section('title') {{__('warehouses.plural')}} @endsection
 
 @section('css')
     <!-- Internal Data table css -->
@@ -17,12 +17,12 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ __('dashboard.application') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('products.plural') }}</span>
+                <h4 class="content-title mb-0 my-auto">{{ __('warehouses.plural') }}</h4>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('warehouses.plural') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.products.partials.actions.create')
+            @include('dashboard.warehouses.partials.actions.create')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -39,33 +39,20 @@
                         <table class="table text-md-nowrap" id="example2">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.serial_number') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.quantity') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.status') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.actions.actions') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('warehouses.attributes.product') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('warehouses.attributes.quantity') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($warehouses as $warehouse)
                                     <tr>
-                                        <td>{{$product->id}}</td>
-                                        <td>{{$product->getTranslation('title', app()->getLocale())}}</td>
-                                        <td>{{$product->serial_number}}</td>
-                                        <td>{{$product->quantity}}</td>
                                         <td>
-                                            <span class="badge {{$product->status->color()}}">{{$product->status->trans()}}</span>
+                                            <a href="{{ route('products.show', $warehouse->product) }}" target="_blank">
+                                                {{$warehouse->product->getTranslation('title', app()->getLocale())}}
+                                            </a>
                                         </td>
-                                        <td>
-                                            @include('dashboard.products.partials.actions.show')
-                                            @include('dashboard.products.partials.actions.edit')
-                                            @include('dashboard.products.partials.actions.installments')
-                                            @include('dashboard.products.partials.actions.delete')
-                                        </td>
+                                        <td>{{$warehouse->quantity}}</td>
                                     </tr>
-
-                                    @include('dashboard.products.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>

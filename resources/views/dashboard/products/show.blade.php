@@ -45,6 +45,10 @@
                                     <td>{{$product->serial_number}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('products.attributes.quantity') }}</th>
+                                    <td>{{$product->quantity}}</td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('products.attributes.cash_price') }}</th>
                                     <td>{{$product->cash_price}}</td>
                                 </tr>

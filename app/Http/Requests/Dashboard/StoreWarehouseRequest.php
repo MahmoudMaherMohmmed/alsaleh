@@ -4,7 +4,7 @@ namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductRequest extends FormRequest
+class StoreWarehouseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,10 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|array',
-            'title.*' => 'string',
-            'description' => 'nullable|array',
-            'description.*' => 'nullable|string',
-            'serial_number' => 'required|string|unique:products,serial_number,' . $this->product->id,
-            'cash_price' => 'required|numeric',
-            'salesman_profit' => 'required|numeric',
-            'status' => 'required',
-            'image' => 'nullable|mimes:jpeg,png,jpg,svg',
+            'products' => 'required|array',
+            'products.*' => 'required|integer|exists:products,id',
+            'quantities' => 'required|array',
+            'quantities.*' => 'required|integer',
         ];
     }
 
@@ -41,6 +36,6 @@ class UpdateProductRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('products.attributes');
+        return trans('warehouses.attributes');
     }
 }

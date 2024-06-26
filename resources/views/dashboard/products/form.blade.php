@@ -119,13 +119,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 d-none">
-                                <div class="form-group">
-                                    <label class="form-label">{{ __('products.attributes.quantity') }} <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="quantity" placeholder="{{ __('products.attributes.quantity') }}" value="{{$product!=null ? $product->quantity : old('quantity', 0)}}" required="" type="number">
-                                </div>
-                            </div>
-
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('products.attributes.cash_price') }} <span class="tx-danger">*</span></label>

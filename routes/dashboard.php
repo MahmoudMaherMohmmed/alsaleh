@@ -12,6 +12,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('salesmen', SalesmanController::class);
     Route::resource('areas', AreaController::class);
     Route::resource('customers', CustomerController::class);
+
+    //Warehouse
+    Route::resource('warehouses', WarehouseController::class)->only(['index', 'create', 'store', 'show']);
 
     //Sales
     Route::resource('car_salesmen', CarSalesmanController::class);
