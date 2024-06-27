@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Http\Requests\Dashboard\StoreCarRequest;
 use App\Http\Requests\Dashboard\UpdateCarRequest;
+use App\Models\Product;
 
 class CarController extends Controller
 {
@@ -90,5 +91,18 @@ class CarController extends Controller
         $car->delete();
 
         return redirect()->route('cars.index')->with('success', trans('cars.messages.deleted'));
+    }
+
+    /**
+     * Display the specified resource products.
+     *
+     * @param \App\Models\Car $car
+     * @return \Illuminate\View\View
+     */
+    public function products(Car $car)
+    {
+        $products = Product::active()->latest()->get();
+
+        return view('dashboard.cars.products', compact('car', 'products'));
     }
 }

@@ -52,12 +52,11 @@ class WarehouseController extends Controller
                     'quantity' => $request->quantities[$key],
                 ]);
             } else {
-                $warehouse->update(['quantity' => $warehouse->quantity + $request->quantities[$key]]);
+                $warehouse->increment('quantity', $request->quantities[$key]);
             }
 
-            //Update product Quantity
-            $product = Product::where('id', $product_id)->first();
-            $product->update(['quantity' => $product->quantity + $request->quantities[$key]]);
+            //Increment product quantity
+            Product::where('id', $product_id)->increment('quantity', $request->quantities[$key]);
 
             //Save to warehouse tracking
             WarehouseTracking::create([

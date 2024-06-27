@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CarProductController;
 use App\Http\Controllers\CarSalesmanController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
@@ -46,6 +47,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('products/{product}/installments', [ProductController::class, 'installments'])->name('products.installments');
     Route::resource('product_installments', ProductInstallmentController::class)->only(['store', 'update', 'destroy']);
     Route::resource('cars', CarController::class);
+    Route::get('cars/{car}/products', [CarController::class, 'products'])->name('cars.products');
+    Route::resource('car_products', CarProductController::class)->only(['store']);
     Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store']);
     Route::resource('settings', SettingController::class)->only(['index', 'show', 'edit', 'update']);
 });

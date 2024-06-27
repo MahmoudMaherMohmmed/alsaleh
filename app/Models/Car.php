@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\CarStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
@@ -32,6 +33,14 @@ class Car extends Model
     protected $casts = [
         'status' => CarStatusEnum::class,
     ];
+
+    /**
+     * @return BelongsToMany
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
+    }
 
     public function scopeActive($query)
     {

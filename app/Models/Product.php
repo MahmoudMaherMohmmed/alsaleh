@@ -7,6 +7,7 @@ use App\Http\Filters\Filterable;
 use App\Http\Filters\ProductFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -70,6 +71,14 @@ class Product extends Model implements HasMedia
     public function installments(): HasMany
     {
         return $this->hasMany(ProductInstallment::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function cars(): BelongsToMany
+    {
+        return $this->belongsToMany(Car::class)->withPivot('quantity');
     }
 
     public function scopeActive($query)
