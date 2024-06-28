@@ -49,6 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('cars', CarController::class);
     Route::get('cars/{car}/products', [CarController::class, 'products'])->name('cars.products');
     Route::resource('car_products', CarProductController::class)->only(['store']);
+    Route::get('car_products/{car}/tracking', [CarProductController::class, 'tracking'])->name('car_products.tracking');
     Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store']);
     Route::resource('settings', SettingController::class)->only(['index', 'show', 'edit', 'update']);
 });

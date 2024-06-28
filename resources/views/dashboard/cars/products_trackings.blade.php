@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('title') {{__('cars.plural')}} @endsection
+@section('title') {{__('car_product_trackings.plural')}} @endsection
 
 @section('css')
     <!-- Internal Data table css -->
@@ -17,16 +17,12 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ __('dashboard.application') }}</h4>
+                <h4 class="content-title mb-0 my-auto">{{ __('warehouses.plural') }}</h4>
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('cars.index') }}">{{ __('cars.plural') }}</a></span>
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('cars.show', $car) }}">{{ $car->getTranslation('title', app()->getLocale()) }}</a></span>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('products.plural') }}</span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('cars.products', $car) }}">{{ __('products.plural') }}</a></span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('car_product_trackings.plural') }}</span>
             </div>
-        </div>
-        <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.cars.partials.actions.products_trackings')
-            @include('dashboard.cars.partials.actions.add_products')
-            @include('dashboard.cars.partials.models.add_products')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -42,22 +38,40 @@
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="example2">
                             <thead>
-                                <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_products.attributes.product') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('car_products.attributes.quantity') }}</th>
-                                </tr>
+                            <tr>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.user') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.car') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.product') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.quantity') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.type') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('car_product_trackings.attributes.created_at') }}</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach($car->products as $product)
-                                    <tr>
-                                        <td>
-                                            <a href="{{ route('products.show', $product) }}" target="_blank">
-                                                {{$product->getTranslation('title', app()->getLocale())}}
-                                            </a>
-                                        </td>
-                                        <td>{{$product->pivot->quantity}}</td>
-                                    </tr>
-                                @endforeach
+                            @foreach($car_products_trackings as $car_product_tracking)
+                                <tr>
+                                    <td>
+                                        <a href="{{ route('users.show', $car_product_tracking->trackingable->id) }}" target="_blank">
+                                            {{$car_product_tracking->trackingable->name}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('cars.show', $car_product_tracking->car) }}" target="_blank">
+                                            {{$car_product_tracking->car->getTranslation('title', app()->getLocale())}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('products.show', $car_product_tracking->product) }}" target="_blank">
+                                            {{$car_product_tracking->product->getTranslation('title', app()->getLocale())}}
+                                        </a>
+                                    </td>
+                                    <td>{{$car_product_tracking->quantity}}</td>
+                                    <td>
+                                        <span class="badge {{$car_product_tracking->type->color()}}">{{$car_product_tracking->type->trans()}}</span>
+                                    </td>
+                                    <td style="direction: ltr;">{{$car_product_tracking->created_at}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -93,6 +107,4 @@
     <script src="{{URL::asset('dashboard/assets/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
     <!-- Internal Select2 js-->
     <script src="{{URL::asset('dashboard/assets/plugins/select2/js/select2.min.js')}}"></script>
-    <!-- Internal Modal js-->
-    <script src="{{URL::asset('dashboard/assets/js/modal.js')}}"></script>
 @endsection

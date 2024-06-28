@@ -26,6 +26,7 @@ return [
     'attributes' => [
         'id' => 'ID',
         'user' => 'User',
+        'car' => 'Car',
         'product' => 'Product',
         'quantity' => 'Quantity',
         'type' => 'Type',

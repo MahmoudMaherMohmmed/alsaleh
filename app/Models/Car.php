@@ -6,6 +6,7 @@ use App\Enums\CarStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
@@ -40,6 +41,14 @@ class Car extends Model
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class)->withPivot('quantity');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function products_trackings(): HasMany
+    {
+        return $this->hasMany(CarProductTracking::class);
     }
 
     public function scopeActive($query)

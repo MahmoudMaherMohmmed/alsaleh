@@ -51,4 +51,16 @@ class CarProductController extends Controller
 
         return redirect()->route('cars.products', $car)->with('success', trans('car_products.messages.created'));
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function tracking(Car $car)
+    {
+        $car_products_trackings = $car->products_trackings;
+
+        return view('dashboard.cars.products_trackings', compact('car', 'car_products_trackings'));
+    }
 }
