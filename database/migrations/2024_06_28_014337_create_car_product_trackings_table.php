@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('car_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('quantity')->default(0);
-            $table->boolean('type')->default(CarProductTrackingTypeEnum::NEW->value);
+            $table->tinyInteger('type')->default(CarProductTrackingTypeEnum::NEW->value);
             $table->timestamps();
         });
     }

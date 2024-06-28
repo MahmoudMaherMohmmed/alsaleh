@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\SaleInstallmentStatusEnum;
+use App\Enums\SaleInstallmentTypeEnum;
 use App\Enums\SaleStatusEnum;
 use App\Models\CarSalesman;
 use App\Models\Customer;
@@ -94,6 +95,7 @@ class SaleService
                 'title' => $this->getInstallmentName($key),
                 'value' => $installment['value'],
                 'due_date' => $installment['due_date'],
+                'type' => $key == 0 ? SaleInstallmentTypeEnum::DEPOSIT : SaleInstallmentTypeEnum::INSTALLMENT,
                 'status' => $installment['status']
             ]);
         }

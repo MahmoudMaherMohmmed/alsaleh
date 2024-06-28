@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\SaleInstallmentStatusEnum;
+use App\Enums\SaleInstallmentTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ return new class extends Migration {
             $table->text('title');
             $table->double('value')->default(0);
             $table->date('due_date');
+            $table->tinyInteger('type')->default(SaleInstallmentTypeEnum::INSTALLMENT->value);
             $table->boolean('status')->default(SaleInstallmentStatusEnum::UNPAID->value);
             $table->timestamps();
             $table->softDeletes();
