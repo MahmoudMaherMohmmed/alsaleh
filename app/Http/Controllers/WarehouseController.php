@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\WarehouseTrackingTypeEnum;
 use App\Models\Product;
 use App\Models\Warehouse;
 use App\Http\Requests\Dashboard\StoreWarehouseRequest;
@@ -63,6 +64,7 @@ class WarehouseController extends Controller
                 'user_id' => auth()->id(),
                 'product_id' => $product_id,
                 'quantity' => $request->quantities[$key],
+                'type' => WarehouseTrackingTypeEnum::NEW,
             ]);
         }
 

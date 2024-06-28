@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CarProductTrackingTypeEnum;
 use App\Enums\WarehouseTrackingTypeEnum;
 use App\Models\Car;
 use App\Http\Requests\Dashboard\StoreCarProductRequest;
+use App\Models\CarProductTracking;
 use App\Models\Warehouse;
 use App\Models\WarehouseTracking;
 
@@ -27,6 +29,15 @@ class CarProductController extends Controller
         } else {
             $car->products()->attach($request->product_id, ['quantity' => $request->quantity]);
         }
+
+        //Save to car product tracking
+        CarProductTracking::create([
+            'user_id' => auth()->id(),
+            'car_id' => $request->car_id,
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity,
+            'type' => CarProductTrackingTypeEnum::NEW,
+        ]);
 
         //Decrement quantity from warehouse
         Warehouse::where('product_id', $request->product_id)->decrement('quantity', $request->quantity);
