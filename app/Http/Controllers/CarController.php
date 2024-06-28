@@ -103,6 +103,6 @@ class CarController extends Controller
     {
         $products = Product::active()->latest()->get();
 
-        return view('dashboard.cars.products', compact('car', 'products'));
+        return view('dashboard.cars.products.list', compact('car', 'products'));
     }
 }

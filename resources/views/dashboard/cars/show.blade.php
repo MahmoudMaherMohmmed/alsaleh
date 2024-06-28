@@ -59,7 +59,7 @@
                                 <tr>
                                     <th scope="row">{{ __('cars.actions.actions') }}</th>
                                     <td>
-                                        @include('dashboard.cars.partials.actions.products')
+                                        @include('dashboard.cars.products.partials.actions.list')
                                         @include('dashboard.cars.partials.actions.edit')
                                         @include('dashboard.cars.partials.actions.delete')
                                     </td>

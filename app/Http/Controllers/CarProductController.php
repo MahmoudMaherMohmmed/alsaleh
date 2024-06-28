@@ -6,7 +6,6 @@ use App\Enums\CarProductTrackingTypeEnum;
 use App\Enums\WarehouseTrackingTypeEnum;
 use App\Models\Car;
 use App\Http\Requests\Dashboard\StoreCarProductRequest;
-use App\Models\CarProductTracking;
 use App\Models\Warehouse;
 use App\Models\WarehouseTracking;
 
@@ -59,8 +58,8 @@ class CarProductController extends Controller
      */
     public function tracking(Car $car)
     {
-        $car_products_trackings = $car->products_trackings;
+        $car_products_trackings = $car->products_trackings()->latest()->get();
 
-        return view('dashboard.cars.products_trackings', compact('car', 'car_products_trackings'));
+        return view('dashboard.cars.products.tracking', compact('car', 'car_products_trackings'));
     }
 }
