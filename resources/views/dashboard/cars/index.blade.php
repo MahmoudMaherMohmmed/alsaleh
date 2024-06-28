@@ -59,6 +59,7 @@
                                         </td>
                                         <td>
                                             @include('dashboard.cars.partials.actions.show')
+                                            @include('dashboard.cars.partials.actions.products')
                                             @include('dashboard.cars.partials.actions.edit')
                                             @include('dashboard.cars.partials.actions.delete')
                                         </td>

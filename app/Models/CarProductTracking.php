@@ -6,13 +6,15 @@ use App\Enums\CarProductTrackingTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class CarProductTracking extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'trackingable_id',
+        'trackingable_type',
         'car_id',
         'product_id',
         'quantity',
@@ -29,11 +31,11 @@ class CarProductTracking extends Model
     ];
 
     /**
-     * @return BelongsTo
+     * @return MorphTo
      */
-    public function user(): BelongsTo
+    public function trackingable(): MorphTo
     {
-        return $this->belongsTo(User::class)->withTrashed();
+        return $this->morphTo()->withTrashed();
     }
 
     /**

@@ -13,7 +13,7 @@ return new class extends Migration {
     {
         Schema::create('car_product_trackings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->morphs('trackingable');
             $table->foreignId('car_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('quantity')->default(0);

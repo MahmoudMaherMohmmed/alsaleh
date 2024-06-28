@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Enums\UserStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -77,6 +78,14 @@ class User extends Authenticatable implements HasMedia
     public function warehouse_trackings(): HasMany
     {
         return $this->hasMany(WarehouseTracking::class);
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function car_product_trackings(): MorphMany
+    {
+        return $this->morphMany(CarProductTracking::class, 'trackingable');
     }
 
     public function scopeActive($query)

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\ClientReportFiltersStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -89,6 +90,14 @@ class Client extends Authenticatable implements HasMedia
     public function customers(): HasMany
     {
         return $this->hasMany(Customer::class);
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function car_product_trackings(): MorphMany
+    {
+        return $this->morphMany(CarProductTracking::class, 'trackingable');
     }
 
     public function scopeActive($query)

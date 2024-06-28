@@ -31,8 +31,7 @@ class CarProductController extends Controller
         }
 
         //Save to car product tracking
-        CarProductTracking::create([
-            'user_id' => auth()->id(),
+        auth()->user()->car_product_trackings()->create([
             'car_id' => $request->car_id,
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
