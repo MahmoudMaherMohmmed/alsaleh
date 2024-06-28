@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\WarehouseTrackingTypeEnum;
 use App\Models\Car;
 use App\Http\Requests\Dashboard\StoreCarProductRequest;
 use App\Models\Warehouse;
+use App\Models\WarehouseTracking;
 
 class CarProductController extends Controller
 {
@@ -18,16 +20,24 @@ class CarProductController extends Controller
     {
         //Save product to car
         $car = Car::where('id', $request->car_id)->first();
-        if($car->products()->where('product_id', $request->product_id)->exists()){
+        if ($car->products()->where('product_id', $request->product_id)->exists()) {
             $car->products()->updateExistingPivot($request->product_id, [
                 'quantity' => $request->quantity + $car->products()->where('product_id', $request->product_id)->first()->pivot->quantity
             ]);
-        }else{
+        } else {
             $car->products()->attach($request->product_id, ['quantity' => $request->quantity]);
         }
 
         //Decrement quantity from warehouse
         Warehouse::where('product_id', $request->product_id)->decrement('quantity', $request->quantity);
+
+        //Save action to warehouse tracking
+        WarehouseTracking::create([
+            'user_id' => auth()->id(),
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity,
+            'type' => WarehouseTrackingTypeEnum::MOVED_TO_CAR
+        ]);
 
         return redirect()->route('cars.products', $car)->with('success', trans('car_products.messages.created'));
     }

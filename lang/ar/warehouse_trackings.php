@@ -43,5 +43,6 @@ return [
     'type' => [
         'RETURNED' => 'مرتجع',
         'NEW' => 'جديد',
+        'MOVED_TO_CAR' => 'نقل إلي السيارة',
     ]
 ];

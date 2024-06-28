@@ -42,5 +42,6 @@ return [
     'type' => [
         'RETURNED' => 'Returned',
         'NEW' => 'New',
+        'MOVED_TO_CAR' => 'Moved to car',
     ]
 ];
