@@ -65,9 +65,9 @@ function get_salesman_car_product_quantity($product_id)
 
     $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first()->car;
     if ($salesman_car != null) {
-        $salesman_car_product = $salesman_car->products()->where('product_id', $product_id)->first();
-        if ($salesman_car_product != null) {
-            $salesman_car_product->pivot->quantity;
+        $salesman_car_product_pivot = optional($salesman_car->products()->where('product_id', $product_id)->first())->pivot;
+        if ($salesman_car_product_pivot != null) {
+            $quantity = $salesman_car_product_pivot->quantity;
         }
     }
 
