@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\CarSalesman;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
@@ -15,7 +16,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('installments')->filter()->active()->latest()->get();
+        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->car;
+        if ($salesman_car != null) {
+            $products = Product::with('installments')
+                ->whereIn('id', $salesman_car->products()->pluck('id'))
+                ->filter()->active()->latest()->get();
+        }
 
         return response()->json([
             'status' => true,

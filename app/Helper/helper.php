@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\CarSalesman;
+
 function create_avatar($string)
 {
     return 'https://ui-avatars.com/api/?name=' . $string;
@@ -49,9 +51,21 @@ function customer_new_reference_id($salesman_id)
 {
     $last_salesman_customer = App\Models\Customer::where('salesman_id', $salesman_id)->latest()->first();
 
-    if($last_salesman_customer!=null){
+    if ($last_salesman_customer != null) {
         return $last_salesman_customer->reference_id + 1;
-    }else{
+    } else {
         return 1;
     }
+}
+
+function get_salesman_car_product_quantity($product_id)
+{
+    $quantity = 0;
+
+    $salesman_car = CarSalesman::where('salesman_id', auth()->id())->car;
+    if ($salesman_car != null) {
+        $quantity = $salesman_car->products()->where('product_id', $product_id)->pivot->quantity;
+    }
+
+    return $quantity;
 }
