@@ -129,23 +129,22 @@ class SaleController extends Controller
      */
     public function delete(Sale $sale)
     {
-        //Increment salesman car quantity
-        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->car;
-        if ($salesman_car != null) {
-            $salesman_car->where('product_id', $sale->product_id)->increment('quantity', 1);
+        //Increment car quantity
+        $sale_car_product = $sale->car->products()->where('product_id', $sale->product_id)->first();
+        $sale_car_product->pivot->quantity = $sale_car_product->pivot->quantity + 1;
+        $sale_car_product->pivot->save();
 
-            //Save to car product tracking
-            auth()->user()->car_product_trackings()->create([
-                'car_id' => $salesman_car->id,
-                'product_id' => $sale->product_id,
-                'quantity' => 1,
-                'type' => CarProductTrackingTypeEnum::RETURNED,
-            ]);
-        }
+        //Save to car product tracking
+        auth()->user()->car_product_trackings()->create([
+            'car_id' => $sale->car_id,
+            'product_id' => $sale->product_id,
+            'quantity' => 1,
+            'type' => CarProductTrackingTypeEnum::RETURNED,
+        ]);
 
         //Increment product quantity
         $sale->product()->increment('quantity', 1);
-        
+
         //Delete customer if not have another sales
         if (Sale::where('customer_id', $sale->customer_id)->count() == 1) {
             $sale->customer()->forceDelete();
