@@ -21,7 +21,7 @@ class SettingResource extends JsonResource
             'whatsapp_number' => $this->whatsapp_number,
             'calling_number' => $this->calling_number,
             'info_email' => $this->info_email,
-            'support_email' => $this->support_email,    
+            'support_email' => $this->support_email,
             'maximum_period_salesman_can_delete_sale' => $this->maximum_period_salesman_can_delete_sale,
             'created_at' => $this->created_at ? $this->created_at->toDateTimeString() : null,
             'created_at_formatted' => $this->created_at ? $this->created_at->diffForHumans() : null,
