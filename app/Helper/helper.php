@@ -71,5 +71,5 @@ function get_salesman_car_product_quantity($product_id)
         }
     }
 
-    return $quantity;
+    return (string)$quantity;
 }
