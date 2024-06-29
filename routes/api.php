@@ -48,6 +48,7 @@ Route::middleware('localization')->group(function () {
         Route::post('sales/store', [SaleController::class, 'store']);
         Route::get('sales/{sale}', [SaleController::class, 'show']);
         Route::post('sales/{sale}/pay_installment', [SaleController::class, 'payInstallment']);
+        Route::post('sales/{sale}/delete', [SaleController::class, 'delete']);
 
         //Report
         Route::get('reports', [ReportController::class, 'index']);

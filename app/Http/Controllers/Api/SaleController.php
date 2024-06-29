@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\CarProductTrackingTypeEnum;
 use App\Enums\SaleStatusEnum;
 use App\Enums\SaleTypeEnum;
 use App\Http\Requests\Api\PaySaleInstallmentRequest;
 use App\Http\Requests\Api\StoreSaleRequest;
 use App\Http\Resources\SaleResource;
+use App\Models\CarSalesman;
 use App\Models\Sale;
 use App\Http\Controllers\Controller;
 use App\Services\SaleService;
@@ -116,6 +118,44 @@ class SaleController extends Controller
             'status' => true,
             'message' => trans('sales.messages.retrieved'),
             'data' => new SaleResource($sale)
+        ], 200);
+    }
+
+    /**
+     * Delete the specified resource.
+     *
+     * @param \App\Models\Sale $sale
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete(Sale $sale)
+    {
+        //Increment salesman car quantity
+        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->car;
+        if ($salesman_car != null) {
+            $salesman_car->where('product_id', $sale->product_id)->increment('quantity', 1);
+
+            //Save to car product tracking
+            auth()->user()->car_product_trackings()->create([
+                'car_id' => $salesman_car->id,
+                'product_id' => $sale->product_id,
+                'quantity' => 1,
+                'type' => CarProductTrackingTypeEnum::RETURNED,
+            ]);
+        }
+
+        //Increment product quantity
+        $sale->product()->increment('quantity', 1);
+        
+        //Delete customer if not have another sales
+        if (Sale::where('customer_id', $sale->customer_id)->count() == 1) {
+            $sale->customer()->forceDelete();
+        }
+
+        $sale->forceDelete();
+
+        return response()->json([
+            'status' => true,
+            'message' => trans('sales.messages.deleted')
         ], 200);
     }
 }
