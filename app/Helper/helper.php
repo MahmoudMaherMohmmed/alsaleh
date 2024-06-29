@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Car;
 use App\Models\CarSalesman;
 
 function create_avatar($string)
@@ -64,7 +65,7 @@ function get_salesman_car_product_quantity($product_id)
 
     $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first()->car;
     if ($salesman_car != null) {
-        $quantity = $salesman_car->products()->where('product_id', $product_id)->pivot->quantity;
+        $quantity = $salesman_car->products()->where('product_id', $product_id)->first()->pivot->quantity;
     }
 
     return $quantity;
