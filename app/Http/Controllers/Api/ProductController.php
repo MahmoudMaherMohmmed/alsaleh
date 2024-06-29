@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->car;
+        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first()->car;
         if ($salesman_car != null) {
             $products = Product::with('installments')
                 ->whereIn('id', $salesman_car->products()->pluck('id'))
