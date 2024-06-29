@@ -33,6 +33,7 @@ return [
         'support_email' => 'Support email',
         'salesman_profit_percentage' => 'Salesman profit percentage',
         'salesman_assistant_profit_percentage' => 'Salesman assistant profit percentage',
+        'maximum_period_salesman_can_delete_sale' => 'Maximum period salesman can delete sale (In days)',
         'image' => 'Image',
         'created_at' => 'Created at'
     ],

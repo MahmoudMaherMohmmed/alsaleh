@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('support_email')->nullable();
             $table->double('salesman_profit_percentage')->default(0);
             $table->double('salesman_assistant_profit_percentage')->default(0);
+            $sales->integer('maximum_period_salesman_can_delete_sale')->default(7);
             $table->timestamps();
         });
     }

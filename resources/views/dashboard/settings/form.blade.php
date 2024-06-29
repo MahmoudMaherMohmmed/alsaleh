@@ -154,6 +154,13 @@
 
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label class="form-label">{{ __('settings.attributes.maximum_period_salesman_can_delete_sale') }} <span class="tx-danger">*</span></label>
+                                    <input class="form-control" name="maximum_period_salesman_can_delete_sale" placeholder="{{ __('settings.attributes.maximum_period_salesman_can_delete_sale') }}" value="{{$setting!=null ? $setting->maximum_period_salesman_can_delete_sale : old('maximum_period_salesman_can_delete_sale')}}" required="" type="number">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('settings.attributes.image') }} <span class="tx-danger">*</span></label>
                                     <input type="file" name="image" class="dropify" data-default-file="{{$setting!=null ? $setting->getImage() : ''}}" data-height="200" />
                                 </div>

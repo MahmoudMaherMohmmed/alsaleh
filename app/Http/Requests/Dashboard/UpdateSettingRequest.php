@@ -32,6 +32,7 @@ class UpdateSettingRequest extends FormRequest
             'support_email' => 'nullable|email',
             'salesman_profit_percentage' => 'required|numeric',
             'salesman_assistant_profit_percentage' => 'required|numeric',
+            'maximum_period_salesman_can_delete_sale' => 'required|numeric',
             'image' => 'sometimes|mimes:jpeg,png,jpg,svg',
         ];
     }

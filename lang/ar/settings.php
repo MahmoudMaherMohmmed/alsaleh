@@ -33,6 +33,7 @@ return [
         'support_email' => 'أيميل الدعم',
         'salesman_profit_percentage' => 'نسبة ربح مندوب المبيعات',
         'salesman_assistant_profit_percentage' => 'نسبة ربح مساعد مندوب المبيعات',
+        'maximum_period_salesman_can_delete_sale' => 'أقصي مدة يمكن لمندوب المبيعات خلالها حذف الطلب من التطبيق (بالأيام)',
         'image' => 'الصورة',
         'created_at' => 'تاريخ ألإضافة'
     ],

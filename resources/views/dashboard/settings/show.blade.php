@@ -65,6 +65,10 @@
                                     <td>{{$setting->salesman_assistant_profit_percentage}} %</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('settings.attributes.maximum_period_salesman_can_delete_sale') }}</th>
+                                    <td>{{$setting->maximum_period_salesman_can_delete_sale}}</td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('settings.attributes.created_at') }}</th>
                                     <td>{{$setting->created_at->diffForHumans()}}</td>
                                 </tr>

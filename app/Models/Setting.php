@@ -24,6 +24,7 @@ class Setting extends Model implements HasMedia
         'support_email',
         'salesman_profit_percentage',
         'salesman_assistant_profit_percentage',
+        'maximum_period_salesman_can_delete_sale',
     ];
 
     public $translatable = ['title', 'description'];
