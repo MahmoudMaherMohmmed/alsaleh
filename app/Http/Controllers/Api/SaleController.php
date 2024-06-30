@@ -35,7 +35,7 @@ class SaleController extends Controller
             ->where('salesman_id', auth()->id())
             ->filter()
             ->latest()
-            ->get();
+            ->paginate(5);
 
         return response()->json([
             'status' => true,
