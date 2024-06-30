@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Enums\SaleStatusEnum;
 use App\Enums\SaleTypeEnum;
+use App\Http\Filters\Filterable;
+use App\Http\Filters\SaleFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Sale extends Model
 {
     use HasFactory;
+    use Filterable;
     use SoftDeletes;
 
     protected $fillable = [
@@ -40,6 +43,13 @@ class Sale extends Model
         'type' => SaleTypeEnum::class,
         'status' => SaleStatusEnum::class,
     ];
+
+    /**
+     * The filter class name.
+     *
+     * @var string
+     */
+    protected $filter = SaleFilter::class;
 
     /**
      * @return BelongsTo

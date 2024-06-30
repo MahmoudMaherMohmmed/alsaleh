@@ -8,7 +8,6 @@ use App\Enums\SaleTypeEnum;
 use App\Http\Requests\Api\PaySaleInstallmentRequest;
 use App\Http\Requests\Api\StoreSaleRequest;
 use App\Http\Resources\SaleResource;
-use App\Models\CarSalesman;
 use App\Models\Sale;
 use App\Http\Controllers\Controller;
 use App\Services\SaleService;
@@ -32,9 +31,11 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::with('customer')->where(function ($query) {
-            $query->where('salesman_id', auth()->id())->orWhere('salesman_assistant_id', auth()->id());
-        })->latest()->get();
+        $sales = Sale::with('customer')
+            ->where('salesman_id', auth()->id())
+            ->filter()
+            ->latest()
+            ->get();
 
         return response()->json([
             'status' => true,
