@@ -30,6 +30,7 @@ class CustomerResource extends JsonResource
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'created_at_formatted' => optional($this->created_at)->diffForHumans(),
             'sales' => SaleResource::collection($this->whenLoaded('sales')),
+            'sales_count' => $this->sales->count(),
         ];
     }
 }
