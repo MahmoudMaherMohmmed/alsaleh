@@ -14,6 +14,7 @@ class SaleFilter extends BaseFilters
      */
     protected $filters = [
         'product_title',
+        'customer_name',
         'customer_id',
         'area_id',
         'date',
@@ -40,6 +41,36 @@ class SaleFilter extends BaseFilters
     }
 
     /**
+     * Filter the query by customer id.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function customerId($value)
+    {
+        if ($value) {
+            return $this->builder->where('customer_id', $value);
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * Filter the query by customer name.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function customerName($value)
+    {
+        if ($value) {
+            return $this->builder->whereIn('customer_id', Customer::where('name', 'LIKE', "%$value%")->withTrashed()->pluck('id'));
+        }
+
+        return $this->builder;
+    }
+
+    /**
      * Filter the query by area.
      *
      * @param string|int $value
@@ -49,21 +80,6 @@ class SaleFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->whereIn('customer_id', Customer::where('area_id', $value)->withTrashed()->pluck('id'));
-        }
-
-        return $this->builder;
-    }
-
-    /**
-     * Filter the query by customer.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function customerId($value)
-    {
-        if ($value) {
-            return $this->builder->where('customer_id', $value);
         }
 
         return $this->builder;
