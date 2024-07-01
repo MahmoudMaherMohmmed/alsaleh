@@ -12,7 +12,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function index()
     {
@@ -20,14 +20,10 @@ class ProductController extends Controller
         if ($salesman_car != null) {
             $products = Product::with('installments')
                 ->whereIn('id', $salesman_car->products()->pluck('id'))
-                ->filter()->active()->latest()->get();
+                ->filter()->active()->latest()->paginate(5);
         }
 
-        return response()->json([
-            'status' => true,
-            'message' => trans('products.messages.retrieved'),
-            'data' => ProductResource::collection($products ?? [])
-        ], 200);
+        return ProductResource::collection($products ?? []);
     }
 
     /**

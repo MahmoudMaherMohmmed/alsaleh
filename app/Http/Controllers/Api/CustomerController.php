@@ -11,17 +11,13 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function index()
     {
         $customers = Customer::where('salesman_id', auth()->id())->filter()->latest()->paginate(5);
 
-        return response()->json([
-            'status' => true,
-            'message' => trans('customers.messages.retrieved'),
-            'data' => CustomerResource::collection($customers ?? [])
-        ], 200);
+        return CustomerResource::collection($customers ?? []);
     }
 
     /**

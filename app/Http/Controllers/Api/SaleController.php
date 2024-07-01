@@ -27,7 +27,7 @@ class SaleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function index()
     {
@@ -37,11 +37,7 @@ class SaleController extends Controller
             ->latest()
             ->paginate(5);
 
-        return response()->json([
-            'status' => true,
-            'message' => trans('sales.messages.retrieved'),
-            'data' => SaleResource::collection($sales ?? [])
-        ], 200);
+        return SaleResource::collection($sales ?? []);
     }
 
     /**
