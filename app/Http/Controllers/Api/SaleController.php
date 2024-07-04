@@ -76,9 +76,11 @@ class SaleController extends Controller
             $this->saleService->saveInstallments($sale, $request->installments);
         }
 
+        $this->saleService->updateProductQuantity($sale);
+
         return response()->json([
             'status' => true,
-            'message' => trans('sales.messages.retrieved'),
+            'message' => trans('sales.messages.created'),
             'data' => new SaleResource($sale)
         ], 200);
     }
@@ -113,7 +115,7 @@ class SaleController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => trans('sales.messages.retrieved'),
+            'message' => trans('sale_installments.messages.paid'),
             'data' => new SaleResource($sale)
         ], 200);
     }

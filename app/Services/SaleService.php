@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Enums\CarProductTrackingTypeEnum;
 use App\Enums\SaleInstallmentStatusEnum;
 use App\Enums\SaleInstallmentTypeEnum;
 use App\Enums\SaleStatusEnum;
+use App\Models\Car;
 use App\Models\CarSalesman;
 use App\Models\Customer;
 use App\Models\Product;
@@ -124,5 +126,29 @@ class SaleService
         ];
 
         return $installments[$installment_id];
+    }
+
+    public function updateProductQuantity($sale)
+    {
+        //Update car product quantity
+        $car = Car::where('id', $sale->car_id)->first();
+        if ($car->products()->where('product_id', $sale->product_id)->exists()) {
+            $car->products()->updateExistingPivot($sale->product_id, [
+                'quantity' => $car->products()->where('product_id', $sale->product_id)->first()->pivot->quantity - 1
+            ]);
+        }
+
+        //Save to car product tracking
+        auth()->user()->car_product_trackings()->create([
+            'car_id' => $sale->car_id,
+            'product_id' => $sale->product_id,
+            'quantity' => 1,
+            'type' => CarProductTrackingTypeEnum::SOLD,
+        ]);
+
+        //Decrement product quantity
+        $sale->product()->decrement('quantity', 1);
+
+        return true;
     }
 }

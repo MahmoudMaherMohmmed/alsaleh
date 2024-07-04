@@ -21,6 +21,7 @@ return [
         'created' => 'The sale installment has been created successfully',
         'updated' => 'The sale installment has been updated successfully',
         'deleted' => 'The sale installment has been deleted successfully',
+        'paid' => 'The sale installment has been paid successfully',
         'retrieved' => 'Data has been retrieved successfully',
     ],
     'attributes' => [
