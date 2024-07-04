@@ -79,5 +79,7 @@ return [
         'total_installment_sales_count' => 'إجمالي عدد المبيعات (قسط)',
         'total_paid_sales_deposit_count' => 'عدد المقدمات المحصلة',
         'total_paid_sales_deposit_amount' => 'قيمة المقدمات المحصلة',
+        'total_unpaid_sales_deposit_count' => 'عدد المقدمات المتاخرة',
+        'total_unpaid_sales_deposit_amount' => 'قيمة المقدمات المتاخرة',
     ],
 ];
