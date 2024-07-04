@@ -77,5 +77,7 @@ return [
         'total_cash_sales_count' => 'إجمالي عدد المبيعات (كاش)',
         'total_cash_sales_amount' => 'جمالي مبلغ المبيعات (كاش)',
         'total_installment_sales_count' => 'إجمالي عدد المبيعات (قسط)',
+        'total_paid_sales_deposit_count' => 'عدد المقدمات المحصلة',
+        'total_paid_sales_deposit_amount' => 'قيمة المقدمات المحصلة',
     ],
 ];
