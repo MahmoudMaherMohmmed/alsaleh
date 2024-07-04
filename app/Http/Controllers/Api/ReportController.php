@@ -83,6 +83,26 @@ class ReportController extends Controller
                     'title' => trans('sales.report.total_unpaid_sales_deposit_amount'),
                     'value' => $installments->where('type', SaleInstallmentTypeEnum::DEPOSIT)->where('status', SaleInstallmentStatusEnum::UNPAID)->sum('value')
                 ],
+                [
+                    'key' => 'total_paid_sales_installments_count',
+                    'title' => trans('sales.report.total_paid_sales_installments_count'),
+                    'value' => $installments->where('type', SaleInstallmentTypeEnum::INSTALLMENT)->where('status', SaleInstallmentStatusEnum::PAID)->count()
+                ],
+                [
+                    'key' => 'total_paid_sales_installments_amount',
+                    'title' => trans('sales.report.total_paid_sales_installments_amount'),
+                    'value' => $installments->where('type', SaleInstallmentTypeEnum::INSTALLMENT)->where('status', SaleInstallmentStatusEnum::PAID)->sum('value')
+                ],
+                [
+                    'key' => 'total_unpaid_sales_installments_count',
+                    'title' => trans('sales.report.total_unpaid_sales_installments_count'),
+                    'value' => $installments->where('type', SaleInstallmentTypeEnum::INSTALLMENT)->where('status', SaleInstallmentStatusEnum::UNPAID)->count()
+                ],
+                [
+                    'key' => 'total_unpaid_sales_installments_amount',
+                    'title' => trans('sales.report.total_unpaid_sales_installments_amount'),
+                    'value' => $installments->where('type', SaleInstallmentTypeEnum::INSTALLMENT)->where('status', SaleInstallmentStatusEnum::UNPAID)->sum('value')
+                ]
             ]
         ], 200);
     }

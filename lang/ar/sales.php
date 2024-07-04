@@ -81,5 +81,9 @@ return [
         'total_paid_sales_deposit_amount' => 'قيمة المقدمات المحصلة',
         'total_unpaid_sales_deposit_count' => 'عدد المقدمات المتاخرة',
         'total_unpaid_sales_deposit_amount' => 'قيمة المقدمات المتاخرة',
+        'total_paid_sales_installments_count' => 'عدد الأقساط المحصلة',
+        'total_paid_sales_installments_amount' => 'قيمة الأقساط المحصلة',
+        'total_unpaid_sales_installments_count' => 'عدد الأقساط المتاخرة',
+        'total_unpaid_sales_installments_amount' => 'قيمة الأقساط المتاخرة',
     ],
 ];

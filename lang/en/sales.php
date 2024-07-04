@@ -81,5 +81,9 @@ return [
         'total_paid_sales_deposit_amount' => 'Total paid sales deposit amount',
         'total_unpaid_sales_deposit_count' => 'Total unpaid sales deposit count',
         'total_unpaid_sales_deposit_amount' => 'Total unpaid sales deposit amount',
+        'total_paid_sales_installments_count' => 'Total paid sales installments count',
+        'total_paid_sales_installments_amount' => 'Total paid sales installments amount',
+        'total_unpaid_sales_installments_count' => 'Total unpaid sales installments count',
+        'total_unpaid_sales_installments_amount' => 'Total unpaid sales installments amount',
     ],
 ];
