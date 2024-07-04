@@ -75,6 +75,7 @@ return [
     'report' => [
         'total_sales_count' => 'Total sales count',
         'total_cash_sales_count' => 'Total cash sales count',
+        'total_cash_sales_amount' => 'Total cash sales amount',
         'total_installment_sales_count' => 'Total installment sales count',
     ],
 ];

@@ -45,6 +45,11 @@ class ReportController extends Controller
                     'value' => $sales->where('type', SaleTypeEnum::CASH)->count()
                 ],
                 [
+                    'key' => 'total_cash_sales_amount',
+                    'title' => trans('sales.report.total_cash_sales_amount'),
+                    'value' => $sales->where('type', SaleTypeEnum::CASH)->sum('price')
+                ],
+                [
                     'key' => 'total_installment_sales_count',
                     'title' => trans('sales.report.total_installment_sales_count'),
                     'value' => $sales->where('type', SaleTypeEnum::INSTALLMENT)->count()

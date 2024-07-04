@@ -75,6 +75,7 @@ return [
     'report' => [
         'total_sales_count' => 'إجمالي عدد المبيعات',
         'total_cash_sales_count' => 'إجمالي عدد المبيعات (كاش)',
+        'total_cash_sales_amount' => 'جمالي مبلغ المبيعات (كاش)',
         'total_installment_sales_count' => 'إجمالي عدد المبيعات (قسط)',
     ],
 ];
