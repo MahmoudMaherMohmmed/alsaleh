@@ -50,12 +50,12 @@ class SaleService
         return $customer->id;
     }
 
-    public function getProductPrice($product_id, $type)
+    public function getProductPrice($product_id, $type, $cash_price)
     {
         $product = Product::where('id', $product_id)->first();
 
         if ($type == 1) {
-            return $product->cash_price;
+            return $cash_price;
         } else {
             return $product->installments()->sum('value');
         }

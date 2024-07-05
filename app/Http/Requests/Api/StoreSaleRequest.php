@@ -35,6 +35,7 @@ class StoreSaleRequest extends FormRequest
             'product_id' => 'required|integer|exists:products,id',
             'date' => 'required|date_format:Y-m-d',
             'type' => 'required|integer',
+            'cash_price' => 'required_if:type,==,1|numeric',
             'installments' => 'required_if:type,==,0|array',
             'installments.*' => 'required_if:type,==,0|array',
             'installments.*.due_date' => 'required_if:type,==,0|date_format:Y-m-d',

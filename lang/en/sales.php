@@ -40,6 +40,7 @@ return [
         'price' => 'Price',
         'date' => 'Date',
         'type' => 'Type',
+        'cash_price' => 'Cash price',
         'car_id' => 'Car',
         'salesman_id' => 'Salesman',
         'salesman_profit_percentage' => 'Salesman profit percentage',

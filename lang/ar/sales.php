@@ -40,6 +40,7 @@ return [
         'price' => 'سعر المنتج',
         'date' => 'تاريخ البيعة',
         'type' => 'نوع',
+        'cash_price' => 'السعر',
         'car_id' => 'السيارة',
         'salesman_id' => 'مندوب المبيعات',
         'salesman_profit_percentage' => 'نسبة عائد مندوب المبيعات',
