@@ -52,6 +52,9 @@
             @include('dashboard.car_salesmen.partials.actions.sidebar')
             @include('dashboard.sales.partials.actions.sidebar')
 
+            <li class="side-item side-item-category">{{ __('dashboard.expenses') }}</li>
+            @include('dashboard.salesman_expenses.partials.actions.sidebar')
+
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
             @include('dashboard.cars.partials.actions.sidebar')
             @include('dashboard.products.partials.actions.sidebar')

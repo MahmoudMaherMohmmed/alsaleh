@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductInstallmentController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SalesmanController;
+use App\Http\Controllers\SalesmanExpenseController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
@@ -41,6 +42,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     //Sales
     Route::resource('car_salesmen', CarSalesmanController::class);
     Route::resource('sales', SaleController::class)->only('index', 'show');
+
+    //Expenses
+    Route::resource('salesman_expenses', SalesmanExpenseController::class);
 
     //Application settings
     Route::resource('products', ProductController::class);
