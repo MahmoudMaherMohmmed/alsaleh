@@ -23,6 +23,7 @@ class UpdateSalesmanExpenseRequest extends FormRequest
     {
         return [
             'salesman_id' => 'required|exists:clients,id',
+            'category_id' => 'required|exists:expense_categories,id',
             'title' => 'required|string',
             'description' => 'nullable|string',
             'value' => 'required|numeric'

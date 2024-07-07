@@ -41,6 +41,7 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('salesman_expenses.attributes.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesman_expenses.attributes.salesman_id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('salesman_expenses.attributes.category_id') }}</th>
                                     <th class="wd-20p border-bottom-0">{{ __('salesman_expenses.attributes.title') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesman_expenses.attributes.value') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('salesman_expenses.attributes.created_at') }}</th>
@@ -51,7 +52,14 @@
                                 @foreach($salesman_expenses as $salesman_expense)
                                     <tr>
                                         <td>{{$salesman_expense->id}}</td>
-                                        <td>{{$salesman_expense->salesman->name}}</td>
+                                        <td>
+                                            <a href="{{ route('salesmen.show', $salesman_expense->salesman) }}" target="_blank">{{$salesman_expense->salesman->name}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('expense_categories.show', $salesman_expense->category) }}" target="_blank">
+                                                {{$salesman_expense->category->getTranslation('title', app()->getLocale())}}
+                                            </a>
+                                        </td>
                                         <td>{{$salesman_expense->title}}</td>
                                         <td>{{$salesman_expense->value}} {{__('dashboard.usd')}}</td>
                                         <td>{{$salesman_expense->created_at}}</td>

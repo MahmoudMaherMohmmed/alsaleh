@@ -12,6 +12,7 @@ class SalesmanExpense extends Model
 
     protected $fillable = [
         'salesman_id',
+        'category_id',
         'title',
         'description',
         'value'
@@ -23,5 +24,13 @@ class SalesmanExpense extends Model
     public function salesman(): BelongsTo
     {
         return $this->belongsTo(Client::class, 'salesman_id')->withTrashed();
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(ExpenseCategory::class, 'category_id')->withTrashed();
     }
 }

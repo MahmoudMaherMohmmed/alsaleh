@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ClientTypeEnum;
+use App\Enums\ExpenseCategoryTypeEnum;
 use App\Models\Client;
+use App\Models\ExpenseCategory;
 use App\Models\SalesmanExpense;
 use App\Http\Requests\Dashboard\StoreSalesmanExpenseRequest;
 use App\Http\Requests\Dashboard\UpdateSalesmanExpenseRequest;
@@ -31,8 +33,9 @@ class SalesmanExpenseController extends Controller
     {
         $salesman_expense = null;
         $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
+        $categories = ExpenseCategory::where('type', ExpenseCategoryTypeEnum::SALESMAN)->latest()->active()->get();
 
-        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen'));
+        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen', 'categories'));
     }
 
     /**
@@ -68,8 +71,9 @@ class SalesmanExpenseController extends Controller
     public function edit(SalesmanExpense $salesman_expense)
     {
         $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
+        $categories = ExpenseCategory::where('type', ExpenseCategoryTypeEnum::SALESMAN)->latest()->active()->get();
 
-        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen'));
+        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen', 'categories'));
     }
 
     /**

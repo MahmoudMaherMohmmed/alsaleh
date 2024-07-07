@@ -27,6 +27,7 @@ return [
         'id' => 'ID',
         'salesman' => 'Salesman',
         'salesman_id' => 'Salesman',
+        'category_id' => 'Expense category',
         'title' => 'Title',
         'description' => 'Description',
         'value' => 'Value',

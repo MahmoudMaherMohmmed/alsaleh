@@ -34,7 +34,15 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">{{ __('salesman_expenses.attributes.salesman') }}</th>
-                                    <td>{{$salesman_expense->salesman->name}}</td>
+                                    <td><a href="{{ route('salesmen.show', $salesman_expense->salesman) }}" target="_blank">{{$salesman_expense->salesman->name}}</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ __('salesman_expenses.attributes.category_id') }}</th>
+                                    <td>
+                                        <a href="{{ route('expense_categories.show', $salesman_expense->category) }}" target="_blank">
+                                            {{$salesman_expense->category->getTranslation('title', app()->getLocale())}}
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{{ __('salesman_expenses.attributes.title') }}</th>

@@ -65,6 +65,18 @@
 
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label class="form-label">{{ __('salesman_expenses.attributes.category_id') }} <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2" name="category_id" required="">
+                                        <option></option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}" {{($salesman_expense!=null && $salesman_expense->category_id==$category->id) || (old('category_id') == $category->id) ? 'selected' : ''}}> {{ $category->title }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('salesman_expenses.attributes.title') }} <span class="tx-danger">*</span></label>
                                     <input class="form-control" name="title" placeholder="{{ __('salesman_expenses.attributes.title') }}" value="{{$salesman_expense!=null ? $salesman_expense->title : old('title')}}" required="" type="text">
                                 </div>
