@@ -53,6 +53,7 @@
             @include('dashboard.sales.partials.actions.sidebar')
 
             <li class="side-item side-item-category">{{ __('dashboard.expenses') }}</li>
+            @include('dashboard.expense_categories.partials.actions.sidebar')
             @include('dashboard.salesman_expenses.partials.actions.sidebar')
 
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
