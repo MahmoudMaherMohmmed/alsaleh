@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarProductController;
 use App\Http\Controllers\CarSalesmanController;
+use App\Http\Controllers\CompanyExpenseController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\HomeController;
@@ -47,6 +48,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     //Expenses
     Route::resource('expense_categories', ExpenseCategoryController::class);
     Route::resource('salesman_expenses', SalesmanExpenseController::class);
+    Route::resource('company_expenses', CompanyExpenseController::class);
 
     //Application settings
     Route::resource('products', ProductController::class);
