@@ -17,7 +17,7 @@ class ExpenseCategoryController extends Controller
     {
         $expense_categories = ExpenseCategory::latest()->get();
 
-        return view('dashboard.expense_categories.index', compact('expense_categories'));
+        return view('dashboard.expenses.categories.index', compact('expense_categories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ExpenseCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.expense_categories.form', ['expense_category' => null]);
+        return view('dashboard.expenses.categories.form', ['expense_category' => null]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ExpenseCategoryController extends Controller
      */
     public function show(ExpenseCategory $expense_category)
     {
-        return view('dashboard.expense_categories.show', compact('expense_category'));
+        return view('dashboard.expenses.categories.show', compact('expense_category'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ExpenseCategoryController extends Controller
      */
     public function edit(ExpenseCategory $expense_category)
     {
-        return view('dashboard.expense_categories.form', compact('expense_category'));
+        return view('dashboard.expenses.categories.form', compact('expense_category'));
     }
 
     /**

@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.expense_categories.partials.actions.create')
+            @include('dashboard.expenses.categories.partials.actions.create')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -58,13 +58,13 @@
                                             <span class="badge {{$expense_category->status->color()}}">{{$expense_category->status->trans()}}</span>
                                         </td>
                                         <td>
-                                            @include('dashboard.expense_categories.partials.actions.show')
-                                            @include('dashboard.expense_categories.partials.actions.edit')
-                                            @include('dashboard.expense_categories.partials.actions.delete')
+                                            @include('dashboard.expenses.categories.partials.actions.show')
+                                            @include('dashboard.expenses.categories.partials.actions.edit')
+                                            @include('dashboard.expenses.categories.partials.actions.delete')
                                         </td>
                                     </tr>
 
-                                    @include('dashboard.expense_categories.partials.models.delete')
+                                    @include('dashboard.expenses.categories.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>

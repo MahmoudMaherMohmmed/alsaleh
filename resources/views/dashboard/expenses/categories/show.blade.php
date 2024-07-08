@@ -55,10 +55,10 @@
                                 <tr>
                                     <th scope="row">{{ __('expense_categories.actions.actions') }}</th>
                                     <td>
-                                        @include('dashboard.expense_categories.partials.actions.edit')
-                                        @include('dashboard.expense_categories.partials.actions.delete')
+                                        @include('dashboard.expenses.categories.partials.actions.edit')
+                                        @include('dashboard.expenses.categories.partials.actions.delete')
                                     </td>
-                                    @include('dashboard.expense_categories.partials.models.delete')
+                                    @include('dashboard.expenses.categories.partials.models.delete')
                                 </tr>
                             </tbody>
                         </table>
