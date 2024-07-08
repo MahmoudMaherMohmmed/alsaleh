@@ -54,7 +54,7 @@
 
             <li class="side-item side-item-category">{{ __('dashboard.expenses') }}</li>
             @include('dashboard.expenses.categories.partials.actions.sidebar')
-            @include('dashboard.salesman_expenses.partials.actions.sidebar')
+            @include('dashboard.expenses.salesman.partials.actions.sidebar')
 
             <li class="side-item side-item-category">{{ __('dashboard.application') }}</li>
             @include('dashboard.cars.partials.actions.sidebar')

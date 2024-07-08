@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.salesman_expenses.partials.actions.create')
+            @include('dashboard.expenses.salesman.partials.actions.create')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -64,13 +64,13 @@
                                         <td>{{$salesman_expense->value}} {{__('dashboard.usd')}}</td>
                                         <td>{{$salesman_expense->created_at}}</td>
                                         <td>
-                                            @include('dashboard.salesman_expenses.partials.actions.show')
-                                            @include('dashboard.salesman_expenses.partials.actions.edit')
-                                            @include('dashboard.salesman_expenses.partials.actions.delete')
+                                            @include('dashboard.expenses.salesman.partials.actions.show')
+                                            @include('dashboard.expenses.salesman.partials.actions.edit')
+                                            @include('dashboard.expenses.salesman.partials.actions.delete')
                                         </td>
                                     </tr>
 
-                                    @include('dashboard.salesman_expenses.partials.models.delete')
+                                    @include('dashboard.expenses.salesman.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>

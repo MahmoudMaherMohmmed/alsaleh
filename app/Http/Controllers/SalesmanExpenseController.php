@@ -21,7 +21,7 @@ class SalesmanExpenseController extends Controller
     {
         $salesman_expenses = SalesmanExpense::latest()->get();
 
-        return view('dashboard.salesman_expenses.index', compact('salesman_expenses'));
+        return view('dashboard.expenses.salesman.index', compact('salesman_expenses'));
     }
 
     /**
@@ -35,7 +35,7 @@ class SalesmanExpenseController extends Controller
         $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
         $categories = ExpenseCategory::where('type', ExpenseCategoryTypeEnum::SALESMAN)->latest()->active()->get();
 
-        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen', 'categories'));
+        return view('dashboard.expenses.salesman.form', compact('salesman_expense', 'salesmen', 'categories'));
     }
 
     /**
@@ -59,7 +59,7 @@ class SalesmanExpenseController extends Controller
      */
     public function show(SalesmanExpense $salesman_expense)
     {
-        return view('dashboard.salesman_expenses.show', compact('salesman_expense'));
+        return view('dashboard.expenses.salesman.show', compact('salesman_expense'));
     }
 
     /**
@@ -73,7 +73,7 @@ class SalesmanExpenseController extends Controller
         $salesmen = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
         $categories = ExpenseCategory::where('type', ExpenseCategoryTypeEnum::SALESMAN)->latest()->active()->get();
 
-        return view('dashboard.salesman_expenses.form', compact('salesman_expense', 'salesmen', 'categories'));
+        return view('dashboard.expenses.salesman.form', compact('salesman_expense', 'salesmen', 'categories'));
     }
 
     /**
