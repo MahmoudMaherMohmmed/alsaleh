@@ -61,7 +61,7 @@ class SaleController extends Controller
             'product_id' => $request->product_id,
             'date' => $request->date,
             'type' => $request->type,
-            'price' => $this->saleService->getProductPrice($request->product_id, $request->type, $request->type == SaleTypeEnum::CASH ? $request->cash_price : null),
+            'price' => $this->saleService->getProductPrice($request->product_id, $request->type, $request->type == SaleTypeEnum::CASH->value ? $request->cash_price : null),
             'car_id' => $car_salesman->car_id,
             'salesman_id' => $car_salesman->salesman_id,
             'salesman_profit_percentage' => $this->saleService->getSalesmanProfitPercentage(),
