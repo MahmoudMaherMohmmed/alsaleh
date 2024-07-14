@@ -16,11 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first()->car;
+        $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first();
         if ($salesman_car != null) {
-            $products = Product::with('installments')
-                ->whereIn('id', $salesman_car->products()->pluck('id'))
-                ->filter()->active()->latest()->paginate(5);
+            if($salesman_car->car != null) {
+                $products = Product::with('installments')
+                    ->whereIn('id', $salesman_car->car->products()->pluck('id'))
+                    ->filter()->active()->latest()->paginate(5);
+            }
         }
 
         return ProductResource::collection($products ?? []);
