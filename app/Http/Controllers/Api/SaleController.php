@@ -35,7 +35,7 @@ class SaleController extends Controller
             ->where('salesman_id', auth()->id())
             ->filter()
             ->latest()
-            ->paginate(5);
+            ->paginate(10);
 
         return SaleResource::collection($sales ?? []);
     }

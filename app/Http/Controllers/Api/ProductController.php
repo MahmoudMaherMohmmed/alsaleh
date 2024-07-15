@@ -21,7 +21,7 @@ class ProductController extends Controller
             if($salesman_car->car != null) {
                 $products = Product::with('installments')
                     ->whereIn('id', $salesman_car->car->products()->pluck('id'))
-                    ->filter()->active()->latest()->paginate(5);
+                    ->filter()->active()->latest()->get();
             }
         }
 
