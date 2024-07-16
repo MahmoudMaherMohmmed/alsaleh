@@ -63,11 +63,13 @@ function get_salesman_car_product_quantity($product_id)
 {
     $quantity = 0;
 
-    $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first()->car;
+    $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first();
     if ($salesman_car != null) {
-        $salesman_car_product_pivot = optional($salesman_car->products()->where('product_id', $product_id)->first())->pivot;
-        if ($salesman_car_product_pivot != null) {
-            $quantity = $salesman_car_product_pivot->quantity;
+        if ($salesman_car->car != null) {
+            $salesman_car_product_pivot = optional($salesman_car->car->products()->where('product_id', $product_id)->first())->pivot;
+            if ($salesman_car_product_pivot != null) {
+                $quantity = $salesman_car_product_pivot->quantity;
+            }
         }
     }
 
