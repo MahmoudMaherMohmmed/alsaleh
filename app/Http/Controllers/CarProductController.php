@@ -30,7 +30,7 @@ class CarProductController extends Controller
         }
 
         //Save to car product tracking
-        auth()->user()->car_product_trackings()->create([
+        $request->user()->car_product_trackings()->create([
             'car_id' => $request->car_id,
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
@@ -42,7 +42,7 @@ class CarProductController extends Controller
 
         //Save action to warehouse tracking
         WarehouseTracking::create([
-            'user_id' => auth()->id(),
+            'user_id' => $request->user()->id,
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'type' => WarehouseTrackingTypeEnum::MOVED_TO_CAR

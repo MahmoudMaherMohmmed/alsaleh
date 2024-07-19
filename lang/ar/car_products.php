@@ -27,7 +27,7 @@ return [
     'attributes' => [
         'id' => 'الرقم التسلسلي',
         'product' => 'المنتج',
-        'quantity' => 'الكمية المتاحة',
+        'quantity' => 'الكمية',
         'products' => 'المنتجات',
         'Quantities' => 'الكمية المتاحة',
         'created_at' => 'تاريخ ألإضافة',

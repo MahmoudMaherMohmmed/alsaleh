@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Http\Requests\Dashboard\StoreCarRequest;
 use App\Http\Requests\Dashboard\UpdateCarRequest;
 use App\Models\Product;
+use App\Models\Warehouse;
 
 class CarController extends Controller
 {
@@ -101,7 +102,7 @@ class CarController extends Controller
      */
     public function products(Car $car)
     {
-        $products = Product::active()->latest()->get();
+        $products = Product::whereIn('id', Warehouse::where('quantity', '>', 0)->pluck('product_id'))->active()->get();
 
         return view('dashboard.cars.products.list', compact('car', 'products'));
     }

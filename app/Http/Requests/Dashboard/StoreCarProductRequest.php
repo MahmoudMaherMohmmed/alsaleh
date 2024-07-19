@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Dashboard;
 
+use App\Models\Warehouse;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCarProductRequest extends FormRequest
@@ -24,7 +25,7 @@ class StoreCarProductRequest extends FormRequest
         return [
             'car_id' => 'required|integer|exists:cars,id',
             'product_id' => 'required|integer|exists:products,id',
-            'quantity' => 'required|integer',
+            'quantity' => 'required|integer|lte:' . Warehouse::where('product_id', $this->product_id)->first()->quantity,
         ];
     }
 
