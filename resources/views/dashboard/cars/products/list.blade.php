@@ -24,9 +24,13 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @include('dashboard.cars.products.partials.actions.tracking')
             @include('dashboard.cars.products.partials.actions.add')
+            @include('dashboard.cars.products.partials.actions.return')
+            @include('dashboard.cars.products.partials.actions.tracking')
+
+            <!--Models-->
             @include('dashboard.cars.products.partials.models.add')
+            @include('dashboard.cars.products.partials.models.return')
         </div>
     </div>
     <!-- breadcrumb -->

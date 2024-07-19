@@ -16,11 +16,13 @@ return [
         'delete' => 'Delete car product',
         'save' => 'Save',
         'filter' => 'Filter',
+        'return' => 'Return quantity to warehouse'
     ],
     'messages' => [
         'created' => 'The car product has been created successfully',
         'updated' => 'The car product has been updated successfully',
         'deleted' => 'The car product has been deleted successfully',
+        'returned' => 'The car product has been returned to warehouse successfully',
         'retrieved' => 'Data has been retrieved successfully',
     ],
     'attributes' => [
