@@ -17,12 +17,10 @@ class ProductController extends Controller
     public function index()
     {
         $salesman_car = CarSalesman::where('salesman_id', auth()->id())->first();
-        if ($salesman_car != null) {
-            if($salesman_car->car != null) {
-                $products = Product::with('installments')
-                    ->whereIn('id', $salesman_car->car->products()->pluck('id'))
-                    ->filter()->active()->latest()->paginate(50);
-            }
+        if ($salesman_car != null && $salesman_car->car != null) {
+            $products = Product::with('installments')
+                ->whereIn('id', $salesman_car->car->products()->wherePivot('quantity', '>', 0)->pluck('id'))
+                ->filter()->active()->latest()->paginate(50);
         }
 
         return ProductResource::collection($products ?? []);
