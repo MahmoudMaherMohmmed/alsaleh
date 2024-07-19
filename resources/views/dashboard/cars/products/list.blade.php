@@ -99,4 +99,11 @@
     <script src="{{URL::asset('dashboard/assets/plugins/select2/js/select2.min.js')}}"></script>
     <!-- Internal Modal js-->
     <script src="{{URL::asset('dashboard/assets/js/modal.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', 'form', function() {
+                $('button').attr('disabled', 'disabled');
+            });
+        });
+    </script>
 @endsection
