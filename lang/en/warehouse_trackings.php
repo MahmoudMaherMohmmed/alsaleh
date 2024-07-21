@@ -43,5 +43,7 @@ return [
         'RETURNED' => 'Returned',
         'NEW' => 'New',
         'MOVED_TO_CAR' => 'Moved to car',
+        'TRANSFER_TO_ANOTHER_WAREHOUSE' => 'Transfer to another warehouse',
+        'DAMAGED' => 'Damaged',
     ]
 ];

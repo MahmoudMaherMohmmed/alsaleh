@@ -18,6 +18,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('warehouses.plural') }}</h4>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{ route('warehouses.index') }}">{{ __('warehouses.actions.list') }}</a></span>
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('warehouse_trackings.plural') }}</span>
             </div>
         </div>
@@ -44,23 +45,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($warehouse_trackings as $warehouse_tracking)
+                            @foreach($warehouse_tracking_products as $warehouse_tracking_product)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('users.show', $warehouse_tracking->user) }}" target="_blank">
-                                            {{$warehouse_tracking->user->name}}
+                                        <a href="{{ route('users.show', $warehouse_tracking_product->user) }}" target="_blank">
+                                            {{$warehouse_tracking_product->user->name}}
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('products.show', $warehouse_tracking->product) }}" target="_blank">
-                                            {{$warehouse_tracking->product->getTranslation('title', app()->getLocale())}}
+                                        <a href="{{ route('products.show', $warehouse_tracking_product->product) }}" target="_blank">
+                                            {{$warehouse_tracking_product->product->getTranslation('title', app()->getLocale())}}
                                         </a>
                                     </td>
-                                    <td>{{$warehouse_tracking->quantity}}</td>
+                                    <td>{{$warehouse_tracking_product->quantity}}</td>
                                     <td>
-                                        <span class="badge {{$warehouse_tracking->type->color()}}">{{$warehouse_tracking->type->trans()}}</span>
+                                        <span class="badge {{$warehouse_tracking_product->type->color()}}">{{$warehouse_tracking_product->type->trans()}}</span>
                                     </td>
-                                    <td style="direction: ltr;">{{$warehouse_tracking->created_at}}</td>
+                                    <td style="direction: ltr;">{{$warehouse_tracking_product->created_at}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -16,12 +16,16 @@ return [
         'delete' => 'Delete warehouse',
         'save' => 'Save',
         'filter' => 'Filter',
+        'transfer_to_another_warehouse' => 'Transfer to another warehouse',
+        'damaged' => 'Damaged',
     ],
     'messages' => [
         'created' => 'The warehouse has been created successfully',
         'updated' => 'The warehouse has been updated successfully',
         'deleted' => 'The warehouse has been deleted successfully',
         'retrieved' => 'Data has been retrieved successfully',
+        'transferred_to_another_warehouse' => 'The warehouse product has been transferred to another warehouse successfully',
+        'damaged' => 'The warehouse product has been specified as damaged successfully',
     ],
     'attributes' => [
         'id' => 'ID',

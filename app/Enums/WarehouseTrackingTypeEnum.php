@@ -9,6 +9,8 @@ enum WarehouseTrackingTypeEnum: int
     case RETURNED = 0;
     case NEW = 1;
     case MOVED_TO_CAR = 2;
+    case TRANSFER_TO_ANOTHER_WAREHOUSE = 3;
+    case DAMAGED = 4;
 
     public function type(): int
     {
@@ -16,6 +18,8 @@ enum WarehouseTrackingTypeEnum: int
             self::RETURNED => 0,
             self::NEW => 1,
             self::MOVED_TO_CAR => 2,
+            self::TRANSFER_TO_ANOTHER_WAREHOUSE => 3,
+            self::DAMAGED => 4,
         };
     }
 
@@ -25,6 +29,8 @@ enum WarehouseTrackingTypeEnum: int
             self::RETURNED => trans('warehouse_trackings.type.' . self::RETURNED->name),
             self::NEW => trans('warehouse_trackings.type.' . self::NEW->name),
             self::MOVED_TO_CAR => trans('warehouse_trackings.type.' . self::MOVED_TO_CAR->name),
+            self::TRANSFER_TO_ANOTHER_WAREHOUSE => trans('warehouse_trackings.type.' . self::TRANSFER_TO_ANOTHER_WAREHOUSE->name),
+            self::DAMAGED => trans('warehouse_trackings.type.' . self::DAMAGED->name),
         };
     }
 
@@ -32,8 +38,10 @@ enum WarehouseTrackingTypeEnum: int
     {
         return match ($this) {
             self::RETURNED => 'badge-danger',
-            self::NEW => 'badge-info',
-            self::MOVED_TO_CAR => 'badge-primary',
+            self::NEW => 'badge-primary',
+            self::MOVED_TO_CAR => 'badge-secondary',
+            self::TRANSFER_TO_ANOTHER_WAREHOUSE => 'badge-info',
+            self::DAMAGED => 'badge-danger',
         };
     }
 
@@ -51,6 +59,14 @@ enum WarehouseTrackingTypeEnum: int
             [
                 'id' => self::MOVED_TO_CAR,
                 'value' => trans('warehouse_trackings.type.' . self::MOVED_TO_CAR->name)
+            ],
+            [
+                'id' => self::TRANSFER_TO_ANOTHER_WAREHOUSE,
+                'value' => trans('warehouse_trackings.type.' . self::TRANSFER_TO_ANOTHER_WAREHOUSE->name)
+            ],
+            [
+                'id' => self::DAMAGED,
+                'value' => trans('warehouse_trackings.type.' . self::DAMAGED->name)
             ]
         ];
     }
@@ -61,6 +77,8 @@ enum WarehouseTrackingTypeEnum: int
             self::NEW->value => trans('warehouse_trackings.type.' . self::NEW->name),
             self::RETURNED->value => trans('warehouse_trackings.type.' . self::RETURNED->name),
             self::MOVED_TO_CAR->value => trans('warehouse_trackings.type.' . self::MOVED_TO_CAR->name),
+            self::TRANSFER_TO_ANOTHER_WAREHOUSE->value => trans('warehouse_trackings.type.' . self::TRANSFER_TO_ANOTHER_WAREHOUSE->name),
+            self::DAMAGED->value => trans('warehouse_trackings.type.' . self::DAMAGED->name),
         ];
     }
 }

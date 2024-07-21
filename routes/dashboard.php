@@ -39,7 +39,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     //Warehouse
     Route::resource('warehouses', WarehouseController::class)->only(['index', 'create', 'store']);
-    Route::get('warehouse_tracking', [warehouseController::class, 'tracking'])->name('warehouses.tracking');
+    Route::post('warehouses/transfer_to_another_warehouse', [WarehouseController::class, 'transferToAnotherWarehouse'])->name('warehouses.transfer_to_another_warehouse');
+    Route::post('warehouses/damaged', [WarehouseController::class, 'damaged'])->name('warehouses.damaged');
+    Route::get('warehouses/tracking', [warehouseController::class, 'tracking'])->name('warehouses.tracking');
 
     //Sales
     Route::resource('car_salesmen', CarSalesmanController::class);

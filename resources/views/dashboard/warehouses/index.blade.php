@@ -23,6 +23,13 @@
         </div>
         <div class="d-flex my-xl-auto right-content">
             @include('dashboard.warehouses.partials.actions.create')
+            @include('dashboard.warehouses.partials.actions.transfer_to_another_warehouse')
+            @include('dashboard.warehouses.partials.actions.damaged')
+            @include('dashboard.warehouses.partials.actions.tracking')
+
+            <!--Models-->
+            @include('dashboard.warehouses.partials.models.transfer_to_another_warehouse')
+            @include('dashboard.warehouses.partials.models.damaged')
         </div>
     </div>
     <!-- breadcrumb -->
@@ -44,14 +51,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($warehouses as $warehouse)
+                                @foreach($warehouse_products as $warehouse_product)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('products.show', $warehouse->product) }}" target="_blank">
-                                                {{$warehouse->product->getTranslation('title', app()->getLocale())}}
+                                            <a href="{{ route('products.show', $warehouse_product->product) }}" target="_blank">
+                                                {{$warehouse_product->product->getTranslation('title', app()->getLocale())}}
                                             </a>
                                         </td>
-                                        <td>{{$warehouse->quantity}}</td>
+                                        <td>{{$warehouse_product->quantity}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -91,4 +98,11 @@
     <script src="{{URL::asset('dashboard/assets/plugins/select2/js/select2.min.js')}}"></script>
     <!-- Internal Modal js-->
     <script src="{{URL::asset('dashboard/assets/js/modal.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', 'form', function() {
+                $('button').attr('disabled', 'disabled');
+            });
+        });
+    </script>
 @endsection

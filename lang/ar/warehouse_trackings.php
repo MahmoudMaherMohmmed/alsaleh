@@ -44,5 +44,7 @@ return [
         'RETURNED' => 'مرتجع',
         'NEW' => 'تم أضافته إلي المخزن',
         'MOVED_TO_CAR' => 'نُقل إلي السيارة',
+        'TRANSFER_TO_ANOTHER_WAREHOUSE' => 'نُقل إلي مخزن آخر',
+        'DAMAGED' => 'تألف',
     ]
 ];

@@ -9,6 +9,5 @@
     <ul class="slide-menu">
         <li><a class="slide-item" href="{{ route('warehouses.index') }}">{{ __('warehouses.actions.list') }}</a></li>
         <li><a class="slide-item" href="{{ route('warehouses.create') }}">{{__('warehouses.actions.create')}}</a></li>
-        <li><a class="slide-item" href="{{ route('warehouses.tracking') }}">{{__('warehouse_trackings.singular')}}</a></li>
     </ul>
 </li>
