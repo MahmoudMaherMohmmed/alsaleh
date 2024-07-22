@@ -21,7 +21,7 @@ class ProductController extends Controller
         if ($salesman_car != null && $salesman_car->car != null) {
             $products = Product::with('installments')
                 ->whereIn('id', $salesman_car->car->products()->wherePivot('quantity', '>', 0)->pluck('id'))
-                ->filter()->active()->orderBy('type', ProductTypeEnum::NEW->value)->paginate(50);
+                ->filter()->active()->orderBy('type', 'DESC')->paginate(50);
         }
 
         return ProductResource::collection($products ?? []);
