@@ -27,6 +27,7 @@ class StoreProductRequest extends FormRequest
             'description' => 'nullable|array',
             'description.*' => 'nullable|string',
             'serial_number' => 'required|string|unique:products,serial_number',
+            'type' => 'required',
             'cash_price' => 'required|numeric',
             'salesman_profit' => 'required|numeric',
             'status' => 'required',

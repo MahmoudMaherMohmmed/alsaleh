@@ -42,9 +42,10 @@
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.title') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.serial_number') }}</th>
+                                    <th class="wd-10p border-bottom-0">{{ __('products.attributes.type') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('products.attributes.quantity') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.attributes.status') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('products.actions.actions') }}</th>
+                                    <th class="wd-10p border-bottom-0">{{ __('products.attributes.status') }}</th>
+                                    <th class="wd-30p border-bottom-0">{{ __('products.actions.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +54,9 @@
                                         <td>{{$product->id}}</td>
                                         <td>{{$product->getTranslation('title', app()->getLocale())}}</td>
                                         <td>{{$product->serial_number}}</td>
+                                        <td>
+                                            <span class="badge {{$product->type->color()}}">{{$product->type->trans()}}</span>
+                                        </td>
                                         <td>{{$product->quantity}}</td>
                                         <td>
                                             <span class="badge {{$product->status->color()}}">{{$product->status->trans()}}</span>

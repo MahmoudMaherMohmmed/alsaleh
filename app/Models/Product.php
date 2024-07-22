@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProductStatusEnum;
+use App\Enums\ProductTypeEnum;
 use App\Http\Filters\Filterable;
 use App\Http\Filters\ProductFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +27,7 @@ class Product extends Model implements HasMedia
         'title',
         'description',
         'serial_number',
+        'type',
         'quantity',
         'cash_price',
         'salesman_profit',
@@ -40,6 +42,7 @@ class Product extends Model implements HasMedia
      * @var array<string, string>
      */
     protected $casts = [
+        'type' => ProductTypeEnum::class,
         'status' => ProductStatusEnum::class,
     ];
 

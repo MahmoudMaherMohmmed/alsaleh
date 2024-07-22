@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\ProductStatusEnum;
+use App\Enums\ProductTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,7 @@ return new class extends Migration {
             $table->text('title');
             $table->text('description')->nullable();
             $table->string('serial_number')->nullable();
+            $table->tinyInteger('type')->default(ProductTypeEnum::NEW->value);
             $table->integer('quantity')->default(0);
             $table->double('cash_price')->default(0);
             $table->double('salesman_profit')->default(0);

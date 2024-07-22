@@ -121,6 +121,17 @@
 
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label class="form-label">{{ __('products.attributes.type') }} <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2-no-search" name="type" required="">
+                                        @foreach(App\Enums\ProductTypeEnum::options() as $key=>$value)
+                                            <option value="{{$key}}" {{$product!=null && $product->type->value==$key ? 'selected' : ''}}> {{ $value }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('products.attributes.cash_price') }} <span class="tx-danger">*</span></label>
                                     <input class="form-control" name="cash_price" placeholder="{{ __('products.attributes.cash_price') }}" value="{{$product!=null ? $product->cash_price : old('cash_price')}}" required="" type="number" step=".01">
                                 </div>
@@ -143,7 +154,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('products.attributes.status') }} <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2-no-search" name="status" require="">
+                                    <select class="form-control select2-no-search" name="status" required="">
                                         @foreach(App\Enums\ProductStatusEnum::options() as $key=>$value)
                                             <option value="{{$key}}" {{$product!=null && $product->status->value==$key ? 'selected' : ''}}> {{ $value }} </option>
                                         @endforeach

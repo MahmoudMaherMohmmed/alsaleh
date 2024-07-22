@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\ProductTypeEnum;
 use App\Models\CarSalesman;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,7 @@ class ProductController extends Controller
         if ($salesman_car != null && $salesman_car->car != null) {
             $products = Product::with('installments')
                 ->whereIn('id', $salesman_car->car->products()->wherePivot('quantity', '>', 0)->pluck('id'))
-                ->filter()->active()->latest()->paginate(50);
+                ->filter()->active()->orderBy('type', ProductTypeEnum::NEW->value)->paginate(50);
         }
 
         return ProductResource::collection($products ?? []);

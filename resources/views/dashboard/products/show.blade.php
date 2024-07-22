@@ -45,6 +45,10 @@
                                     <td>{{$product->serial_number}}</td>
                                 </tr>
                                 <tr>
+                                    <th scope="row">{{ __('products.attributes.type') }}</th>
+                                    <td> <span class="badge {{$product->type->color()}}">{{$product->type->trans()}}</span> </td>
+                                </tr>
+                                <tr>
                                     <th scope="row">{{ __('products.attributes.quantity') }}</th>
                                     <td>{{$product->quantity}}</td>
                                 </tr>

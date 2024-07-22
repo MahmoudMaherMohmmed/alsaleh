@@ -34,6 +34,7 @@ return [
         'installments_count' => 'Installment count',
         'salesman_profit' => 'Salesman profit',
         'image' => 'Image',
+        'type' => 'Type',
         'status' => 'Status',
         'created_at' => 'Created at',
     ],
@@ -48,5 +49,9 @@ return [
     'status' => [
         'ACTIVE' => 'Active',
         'INACTIVE' => 'In active',
+    ],
+    'type' => [
+        'NEW' => 'New',
+        'USED' => 'Used',
     ],
 ];

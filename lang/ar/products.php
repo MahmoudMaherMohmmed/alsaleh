@@ -35,6 +35,7 @@ return [
         'installments_count' => 'عدد الأقساط',
         'salesman_profit' => 'ربح مندوبين المبيعات',
         'image' => 'صورة المنتج',
+        'type' => 'النوع',
         'status' => 'الحالة',
         'created_at' => 'تاريخ ألإضافة',
     ],
@@ -49,5 +50,9 @@ return [
     'status' => [
         'ACTIVE' => 'مفعل',
         'INACTIVE' => 'غير مفعل',
-    ]
+    ],
+    'type' => [
+        'NEW' => 'جديد',
+        'USED' => 'مستعمل',
+    ],
 ];
