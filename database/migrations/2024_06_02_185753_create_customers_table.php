@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('salesman_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('reference_id')->default(0);
             $table->string('name');
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->string('phone_2')->nullable();
             $table->foreignId('area_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('address')->nullable();
