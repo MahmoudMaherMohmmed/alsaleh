@@ -117,6 +117,13 @@
                                     <th scope="row">{{ __('sales.attributes.created_at') }}</th>
                                     <td>{{$sale->created_at->diffForHumans()}}</td>
                                 </tr>
+                                <tr>
+                                    <th scope="row">{{ __('sales.actions.actions') }}</th>
+                                    <td>
+                                        @include('dashboard.sales.partials.actions.delete')
+                                    </td>
+                                    @include('dashboard.sales.partials.models.delete')
+                                </tr>
                             </tbody>
                         </table>
                     </div><!-- bd -->

@@ -70,8 +70,11 @@
                                         <td>{{$sale->date}}</td>
                                         <td>
                                             @include('dashboard.sales.partials.actions.show')
+                                            @include('dashboard.sales.partials.actions.delete')
                                         </td>
                                     </tr>
+
+                                    @include('dashboard.sales.partials.models.delete')
                                 @endforeach
                             </tbody>
                         </table>

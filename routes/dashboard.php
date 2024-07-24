@@ -45,7 +45,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     //Sales
     Route::resource('car_salesmen', CarSalesmanController::class);
-    Route::resource('sales', SaleController::class)->only('index', 'show');
+    Route::resource('sales', SaleController::class)->only('index', 'show', 'destroy');
 
     //Expenses
     Route::resource('expense_categories', ExpenseCategoryController::class);
