@@ -135,7 +135,7 @@ class WarehouseController extends Controller
 
         //Save to warehouse tracking
         WarehouseTracking::create([
-            'user_id' => $request->user()->id,
+            'user_id' => auth()->id(),
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'type' => WarehouseTrackingTypeEnum::TRANSFER_TO_ANOTHER_WAREHOUSE,
@@ -161,7 +161,7 @@ class WarehouseController extends Controller
 
         //Save to warehouse tracking
         WarehouseTracking::create([
-            'user_id' => $request->user()->id,
+            'user_id' => auth()->id(),
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'type' => WarehouseTrackingTypeEnum::DAMAGED,

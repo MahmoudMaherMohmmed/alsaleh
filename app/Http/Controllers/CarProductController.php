@@ -31,7 +31,7 @@ class CarProductController extends Controller
         }
 
         //Save to car product tracking
-        $request->user()->car_product_trackings()->create([
+        auth()->user()->car_product_trackings()->create([
             'car_id' => $request->car_id,
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
@@ -43,7 +43,7 @@ class CarProductController extends Controller
 
         //Save action to warehouse tracking
         WarehouseTracking::create([
-            'user_id' => $request->user()->id,
+            'user_id' => auth()->id(),
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'type' => WarehouseTrackingTypeEnum::MOVED_TO_CAR
@@ -81,7 +81,7 @@ class CarProductController extends Controller
         }
 
         //Save to car product tracking
-        $request->user()->car_product_trackings()->create([
+        auth()->user()->car_product_trackings()->create([
             'car_id' => $request->car_id,
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
@@ -93,7 +93,7 @@ class CarProductController extends Controller
 
         //Save action to warehouse tracking
         WarehouseTracking::create([
-            'user_id' => $request->user()->id,
+            'user_id' => auth()->id(),
             'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'type' => WarehouseTrackingTypeEnum::RETURNED
