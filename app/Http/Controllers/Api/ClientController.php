@@ -25,8 +25,6 @@ class ClientController extends Controller
 
         if ($client != null) {
             if (Hash::check($request->password, $client->password)) {
-                $client->update(['device_token' => $request->device_token]);
-
                 $client->token = $client->createToken('API')->accessToken;
 
                 return response()->json(['status' => true, 'message' => trans('api.logged_in_successfully'), 'data' => new ClientResource($client)], 200);
@@ -36,6 +34,23 @@ class ClientController extends Controller
         } else {
             return response()->json(['status' => false, "message" => trans('api.user_does_not_exist')], 403);
         }
+    }
+
+    /**
+     * Update client device token
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateDeviceToken(Request $request)
+    {
+        $request->user()->update(['device_token' => $request->device_token]);
+
+        return response()->json([
+            'status' => true,
+            'message' => trans('clients.messages.retrieved'),
+            'data' => new ClientResource($request->user())
+        ], 200);
     }
 
     /**

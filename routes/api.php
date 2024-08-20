@@ -27,6 +27,7 @@ Route::middleware('localization')->group(function () {
     Route::get('languages', [SettingController::class, 'languages']);
     Route::post('login', [ClientController::class, 'login']);
     Route::middleware('auth:api')->group(function () {
+        Route::post('update_device_token', [ClientController::class, 'updateDeviceToken']);
         Route::get('profile', [ClientController::class, 'profile']);
         Route::post('logout', [ClientController::class, 'logout']);
         Route::post('profile/delete', [ClientController::class, 'delete']);
@@ -34,7 +35,6 @@ Route::middleware('localization')->group(function () {
         //Products
         Route::get('products', [ProductController::class, 'index']);
         Route::get('products/{product}', [ProductController::class, 'show']);
-
 
         //Areas
         Route::get('areas', [AreaController::class, 'index']);
