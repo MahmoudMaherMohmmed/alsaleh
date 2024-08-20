@@ -45,6 +45,7 @@ class ClientController extends Controller
     public function updateDeviceToken(Request $request)
     {
         $request->user()->update(['device_token' => $request->device_token]);
+        $request->user()->token = $request->bearerToken();
 
         return response()->json([
             'status' => true,
