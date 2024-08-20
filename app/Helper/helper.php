@@ -1,51 +1,56 @@
 <?php
 
-use App\Models\Car;
 use App\Models\CarSalesman;
+use Google\Client;
 
 function create_avatar($string)
 {
     return 'https://ui-avatars.com/api/?name=' . $string;
 }
 
-/**
- * Write code on Method
- *
- * @return response()
- */
 function fcm_notification($firebase_id, $title, $body)
 {
-    $notification = [
-        'title' => $title,
-        'body' => $body,
-        'sound' => 'default',
-    ];
-
-    $fcmNotification = [
-        'to' => $firebase_id,
-        'notification' => $notification,
-        'data' => [
-            "click_action" => "FLUTTER_NOTIFICATION_CLICK",
+    $fcm_message = [
+        'token' => $firebase_id,
+        'notification' => [
+            'title' => $title,
+            'body' => $body,
         ],
-        'priority' => 'high',
+        "android" => [
+            "notification" => [
+                "click_action" => "AL_SALEH_NOTIFICATION_CLICK"
+            ],
+            "priority" => "high"
+        ]
     ];
 
-    $headers = [
-        'Authorization: key=AAAAZDfQYlQ:APA91bEd6x-9lSUx3zOz4RMpuIERfna9DD5yTezorw_ISnnnxs7IMY74mKZkzhPNiZpv55_DTVxLptPaLA8--tD-8xkwQ50nywsRgoGv-ZKWqbGzVmrvsvTrLV2TKOyRS0BoAUlHFy42',
-        'Content-Type: application/json'
-    ];
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/v1/projects/al-saleh/messages:send');
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization' => 'Bearer ' . get_fcm_access_token(),
+        'Content-Type' => 'application/json',
+    ]);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['message' => $fcm_message]));
     curl_exec($ch);
     curl_close($ch);
 
     return true;
+}
+
+function get_fcm_access_token()
+{
+    $credentialsPath = storage_path('app/firebase-service-account.json');
+
+    $client = new Client();
+    $client->setAuthConfig($credentialsPath);
+    $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
+    $token = $client->fetchAccessTokenWithAssertion();
+
+    return $token['access_token'];
 }
 
 function customer_new_reference_id($salesman_id)
