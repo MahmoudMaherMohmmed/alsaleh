@@ -41,7 +41,7 @@ class NotificationController extends Controller
      */
     public function store(StoreNotificationRequest $request)
     {
-        $clients = Client::where('type', ClientTypeEnum::SALES_MAN)->active()->get();
+        $clients = Client::where('type', ClientTypeEnum::SALES_MAN)->whereNotNull('device_token')->active()->get();
 
         // Save notifications
         Notification::send($clients, new NewNotification($request->title, $request->body));
