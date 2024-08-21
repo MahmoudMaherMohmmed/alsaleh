@@ -49,7 +49,7 @@
                             </thead>
                             <tbody>
                                 @foreach($notifications as $key=>$notification)
-                                @php $client = App\Models\Client::where('id', $notification->notifiable_id)->first() @endphp
+                                @php $client = App\Models\Client::where('id', $notification->notifiable_id)->withTrashed()->first() @endphp
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
